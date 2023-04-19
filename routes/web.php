@@ -74,8 +74,10 @@ Route::middleware(['auth','role:admin'])->group(function() {
 
     });
 
+    // company profile
     Route::controller(CompanyController::class)->group(function(){
         Route::get('/company','index')->name('company');
+        Route::post('/update/company/{id}','update')->name('update.company');
     });
 });
 
