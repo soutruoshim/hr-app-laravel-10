@@ -13,6 +13,12 @@ return new class extends Migration
     {
         Schema::create('departments', function (Blueprint $table) {
             $table->id();
+            $table->integer('branch_id');
+            $table->string('department_name')->nullable();
+            $table->string('department_head')->nullable();
+            $table->text('address')->nullable();
+            $table->string('phone')->nullable();
+            $table->enum('status',['active','inactive'])->default('active');
             $table->timestamps();
         });
     }

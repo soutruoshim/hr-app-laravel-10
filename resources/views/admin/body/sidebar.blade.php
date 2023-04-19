@@ -43,7 +43,7 @@ $status = $userid->status;
                             @if(Auth::user()->can('company'))
                             <li>
                                 <!-- <a href="{{ route('all.category') }}">Company</a> -->
-                                <a href="#">Company</a>
+                                <a href="{{ route('company') }}">Company</a>
                             </li>
                             @endif
                             @if(Auth::user()->can('branch'))

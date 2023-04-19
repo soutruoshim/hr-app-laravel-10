@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
 
 use App\Http\Controllers\RoleController;
+use App\Http\Controllers\CompanyController;
 use App\Http\Middleware\RedirectIfAuthenticated;
 use App\Http\Middleware\Role;
 
@@ -71,6 +72,10 @@ Route::middleware(['auth','role:admin'])->group(function() {
         Route::get('/admin/delete/roles/{id}','AdminDeleteRoles')->name('admin.delete.roles');
         Route::post('/role/permission/update/{id}','RolePermissionUpdate')->name('role.permission.update');
 
+    });
+
+    Route::controller(CompanyController::class)->group(function(){
+        Route::get('/company','index')->name('company');
     });
 });
 

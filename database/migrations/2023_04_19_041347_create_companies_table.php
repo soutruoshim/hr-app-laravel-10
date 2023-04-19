@@ -13,6 +13,21 @@ return new class extends Migration
     {
         Schema::create('companies', function (Blueprint $table) {
             $table->id();
+            $table->string('company_name')->nullable();
+            $table->string('company_owner')->nullable();
+            $table->text('address')->nullable();
+            $table->string('email')->nullable();
+            $table->string('phone')->nullable();
+            $table->string('website_url')->nullable();
+            $table->enum('status',['active','inactive'])->default('active');
+            $table->string('logo')->nullable();
+            $table->boolean('sunday');
+            $table->boolean('monday')->nullable();
+            $table->boolean('tuesday')->nullable();
+            $table->boolean('wednesday')->nullable();
+            $table->boolean('thursday')->nullable();
+            $table->boolean('friday')->nullable();
+            $table->boolean('saturday')->nullable();
             $table->timestamps();
         });
     }
