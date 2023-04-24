@@ -48,12 +48,12 @@ $status = $userid->status;
                             @endif
                             @if(Auth::user()->can('branch'))
                             <li>
-                                <a href="#">Branch</a>
+                                <a href="{{ route('all.branch') }}">Branch</a>
                             </li>
                             @endif
                             @if(Auth::user()->can('department'))
                             <li>
-                                <a href="#">Department</a>
+                                <a href="{{ route('all.department') }}">Department</a>
                             </li>
                             @endif
                             @if(Auth::user()->can('position'))

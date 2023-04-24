@@ -7,6 +7,8 @@ use App\Http\Controllers\AdminController;
 
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\CompanyController;
+use App\Http\Controllers\BranchController;
+use App\Http\Controllers\DepartmentController;
 use App\Http\Middleware\RedirectIfAuthenticated;
 use App\Http\Middleware\Role;
 
@@ -78,6 +80,26 @@ Route::middleware(['auth','role:admin'])->group(function() {
     Route::controller(CompanyController::class)->group(function(){
         Route::get('/company','index')->name('company');
         Route::post('/update/company/{id}','update')->name('update.company');
+    });
+
+     // branch
+     Route::controller(BranchController::class)->group(function(){
+        Route::get('/all/branch','index')->name('all.branch');
+        Route::get('/add/branch','create')->name('add.branch');
+        Route::post('/store/branch','store')->name('branch.store');
+        Route::get('/edit/branch/{id}','edit')->name('edit.branch');
+        Route::post('/update/branch/{id}','update')->name('branch.update');
+        Route::get('/delete/branch/{id}','destroy')->name('delete.branch');
+    });
+
+     // department
+     Route::controller(DepartmentController::class)->group(function(){
+        Route::get('/all/department','index')->name('all.department');
+        Route::get('/add/department','create')->name('add.department');
+        Route::post('/store/department','store')->name('department.store');
+        Route::get('/edit/department/{id}','edit')->name('edit.department');
+        Route::post('/update/department/{id}','update')->name('department.update');
+        Route::get('/delete/department/{id}','destroy')->name('delete.department');
     });
 });
 
