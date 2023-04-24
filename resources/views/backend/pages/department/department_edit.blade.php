@@ -29,52 +29,52 @@
                     <div class="card">
                         <div class="card-body">
 
-                            <form id="myForm" method="post" action="{{ route('branch.update', $branch->id) }}">
+                            <form id="myForm" method="post" action="{{ route('department.update', $department->id) }}">
                                 @csrf
 
-                                <input type="hidden" name="id" value="{{ $branch->id }}">
+                                <input type="hidden" name="id" value="{{ $department->id }}">
 
                                 <div class="row">
                                     <div class="form-group col-md-6 mb-3">
-                                        <label for="branch_name" class="form-label">Branch Name </label>
-                                        <input type="text" name="branch_name" class="form-control" id="branch_name" value="{{ $branch->branch_name }}"
-                                            placeholder="Branch Name">
+                                        <label for="department_name" class="form-label">Department Name </label>
+                                        <input type="text" name="department_name" class="form-control" value="{{$department->department_name}}"
+                                            id="department_name" placeholder="Department Name">
                                     </div>
 
                                     <div class="form-group col-md-6 mb-3">
-                                        <label for="branch_name" class="form-label">Address </label>
-                                        <input type="text" name="address" class="form-control" id="address" value="{{ $branch->address }}"
+                                        <label for="branch_id" class="form-label">Branch Name </label>
+                                        <select name="branch_id" class="form-select" id="branch_id">
+                                            <option>Select Branch </option>
+                                            @foreach ($branchs as $branch)
+                                                <option value="{{ $branch->id }}" @if($department->branch_id == $branch->id) selected @endif>{{ $branch->branch_name }}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+
+                                    <div class="form-group col-md-6 mb-3">
+                                        <label for="department_head" class="form-label">Department Head </label>
+                                        <input type="text" name="department_head" class="form-control" value="{{$department->department_head}}"
+                                            id="department_head" placeholder="Department Head">
+                                    </div>
+
+                                    <div class="form-group col-md-6 mb-3">
+                                        <label for="address" class="form-label">Address </label>
+                                        <input type="text" name="address" class="form-control" id="address" value="{{$department->address}}"
                                             placeholder="address">
                                     </div>
 
                                     <div class="form-group col-md-6 mb-3">
-                                        <label for="branch_head" class="form-label">Branch Head </label>
-                                        <input type="text" name="branch_head" class="form-control" id="branch_head" value="{{ $branch->branch_head }}"
-                                            placeholder="Branch Head">
-                                    </div>
-
-                                    <div class="form-group col-md-6 mb-3">
                                         <label for="phone" class="form-label">Phone </label>
-                                        <input type="text" name="phone" class="form-control" id="phone" value="{{ $branch->phone }}"
-                                            placeholder="Phone Head">
+                                        <input type="text" name="phone" class="form-control" id="phone" value="{{$department->phone}}"
+                                            placeholder="Phone">
                                     </div>
 
-                                    <div class="form-group col-md-6 mb-3">
-                                        <label for="late" class="form-label">Latitude </label>
-                                        <input type="text" name="late" class="form-control" id="late" value="{{ $branch->late }}"
-                                            placeholder="Phone Head">
-                                    </div>
-                                    <div class="form-group col-md-6 mb-3">
-                                        <label for="long" class="form-label">Longitude </label>
-                                        <input type="text" name="long" class="form-control" id="long" value="{{ $branch->long }}"
-                                            placeholder="Phone Head">
-                                    </div>
                                     <div class="form-group col-md-6 mb-3">
                                         <label for="exampleFormControlSelect1" class="form-label">Status</label>
                                         <select class="form-select" id="exampleFormControlSelect1" name="status">
                                             <option value="" disabled>Select status</option>
-                                            <option value="active" @if($branch->status=='active') selected @endif>Active</option>
-                                            <option value="inactive" @if($branch->status=='inactive') selected @endif>Inactive</option>
+                                            <option value="active" @if($department->status=='active') selected @endif>Active</option>
+                                            <option value="inactive" @if($department->status=='inactive') selected @endif>Inactive</option>
                                         </select>
                                     </div>
                                 </div>

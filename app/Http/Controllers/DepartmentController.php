@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Branch;
 use App\Models\Department;
 use Illuminate\Http\Request;
 
@@ -20,8 +21,8 @@ class DepartmentController extends Controller
      * Show the form for creating a new resource.
      */
     public function create()
-    {
-        return view('backend.pages.department.department_add');
+    {   $branchs = Branch::latest()->get();
+        return view('backend.pages.department.department_add', compact('branchs'));
     }
 
     /**
@@ -60,7 +61,8 @@ class DepartmentController extends Controller
     public function edit(string $id)
     {
         $department = Department::findOrFail($id);
-        return view('backend.pages.department.department_edit',compact('department'));
+        $branchs = Branch::latest()->get();
+        return view('backend.pages.department.department_edit',compact('department', 'branchs'));
     }
 
     /**
@@ -69,18 +71,14 @@ class DepartmentController extends Controller
     public function update(Request $request, string $id)
     {
         $id = $request->id;
-
         Department::findOrFail($id)->update([
-            'branch_name' => $request->branch_name,
-            'branch_head' => $request->branch_head,
+            'branch_id' => $request->branch_id,
+            'department_name' => $request->department_name,
+            'department_head' => $request->department_head,
             'address' => $request->address,
             'phone' => $request->phone,
-            'late' => $request->late,
-            'long' => $request->long,
             'status' => $request->status
-
         ]);
-
 
          $notification = array(
             'message' => 'Department Updated Successfully',

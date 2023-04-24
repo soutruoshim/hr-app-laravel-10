@@ -14,10 +14,10 @@
                         <div class="page-title-right">
                             <ol class="breadcrumb m-0">
 
-                                <li class="breadcrumb-item active">Add Branch</li>
+                                <li class="breadcrumb-item active">Add Department</li>
                             </ol>
                         </div>
-                        <h4 class="page-title">Add Branch</h4>
+                        <h4 class="page-title">Add Department</h4>
                     </div>
                 </div>
             </div>
@@ -35,19 +35,24 @@
                                 <div class="row">
                                     <div class="form-group col-md-6 mb-3">
                                         <label for="department_name" class="form-label">Department Name </label>
-                                        <input type="text" name="department_name" class="form-control" id="department_name"
-                                            placeholder="Department Name">
+                                        <input type="text" name="department_name" class="form-control"
+                                            id="department_name" placeholder="Department Name">
                                     </div>
+
                                     <div class="form-group col-md-6 mb-3">
                                         <label for="branch_id" class="form-label">Branch Name </label>
-                                        <input type="text" name="branch_id" class="form-control" id="branch_id"
-                                            placeholder="Branch Name">
+                                        <select name="branch_id" class="form-select" id="branch_id">
+                                            <option>Select Branch </option>
+                                            @foreach ($branchs as $branch)
+                                                <option value="{{ $branch->id }}" >{{ $branch->branch_name }}</option>
+                                            @endforeach
+                                        </select>
                                     </div>
 
                                     <div class="form-group col-md-6 mb-3">
                                         <label for="department_head" class="form-label">Department Head </label>
-                                        <input type="text" name="department_head" class="form-control" id="department_head"
-                                            placeholder="Branch Head">
+                                        <input type="text" name="department_head" class="form-control"
+                                            id="department_head" placeholder="Department Head">
                                     </div>
 
                                     <div class="form-group col-md-6 mb-3">
@@ -59,8 +64,9 @@
                                     <div class="form-group col-md-6 mb-3">
                                         <label for="phone" class="form-label">Phone </label>
                                         <input type="text" name="phone" class="form-control" id="phone"
-                                            placeholder="Phone Head">
+                                            placeholder="Phone">
                                     </div>
+
                                     <div class="form-group col-md-6 mb-3">
                                         <label for="exampleFormControlSelect1" class="form-label">Status</label>
                                         <select class="form-select" id="exampleFormControlSelect1" name="status">

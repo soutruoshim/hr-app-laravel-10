@@ -52,10 +52,10 @@
                                             <td>{{ $item->branch->branch_name}}</td>
                                             <td>{{ $item->status }}</td>
                                             <td>
-                                                <a href="{{ route('edit.branch', $item->id) }}"
+                                                <a href="{{ route('edit.department', $item->id) }}"
                                                     class="btn btn-primary rounded-pill waves-effect waves-light">Edit</a>
 
-                                                <a href="{{ route('delete.branch', $item->id) }}"
+                                                <a href="{{ route('delete.department', $item->id) }}"
                                                     class="btn btn-danger rounded-pill waves-effect waves-light"
                                                     id="delete">Delete</a>
                                             </td>
