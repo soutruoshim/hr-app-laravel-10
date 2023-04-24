@@ -40,7 +40,7 @@
                                     </div>
 
                                     <div class="form-group col-md-6 mb-3">
-                                        <label for="branch_name" class="form-label">Address </label>
+                                        <label for="address" class="form-label">Address </label>
                                         <input type="text" name="address" class="form-control" id="address"
                                             placeholder="address">
                                     </div>
@@ -101,10 +101,28 @@
                     branch_name: {
                         required: true,
                     },
+                    address: {
+                        required: true,
+                    },
+                    branch_head: {
+                        required: true,
+                    },
+                    phone:{
+                        required: true,
+                    },
                 },
                 messages: {
                     branch_name: {
                         required: 'Please Enter Branch Name',
+                    },
+                    address: {
+                        required: 'Please Enter Address',
+                    },
+                    branch_head: {
+                        required: 'Please Enter Branch Head',
+                    },
+                    phone: {
+                        required: 'Please Enter Phone',
                     },
                 },
                 errorElement: 'span',

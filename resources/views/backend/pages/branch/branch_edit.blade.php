@@ -99,13 +99,31 @@
         $(document).ready(function() {
             $('#myForm').validate({
                 rules: {
-                    category_name: {
+                    branch_name: {
+                        required: true,
+                    },
+                    address: {
+                        required: true,
+                    },
+                    branch_head: {
+                        required: true,
+                    },
+                    phone:{
                         required: true,
                     },
                 },
                 messages: {
-                    category_name: {
-                        required: 'Please Enter Category Name',
+                    branch_name: {
+                        required: 'Please Enter Branch Name',
+                    },
+                    address: {
+                        required: 'Please Enter Address',
+                    },
+                    branch_head: {
+                        required: 'Please Enter Branch Head',
+                    },
+                    phone: {
+                        required: 'Please Enter Phone',
                     },
                 },
                 errorElement: 'span',

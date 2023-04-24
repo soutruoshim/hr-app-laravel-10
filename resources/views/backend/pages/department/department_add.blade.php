@@ -98,14 +98,32 @@
         $(document).ready(function() {
             $('#myForm').validate({
                 rules: {
-                    branch_name: {
+                    department_name: {
                         required: true,
                     },
+                    department_head: {
+                        required: true,
+                    },
+                    address: {
+                        required: true,
+                    },
+                    phone: {
+                        required: true,
+                    }
                 },
                 messages: {
-                    branch_name: {
+                    department_name: {
                         required: 'Please Enter Branch Name',
                     },
+                    department_head: {
+                        required: 'Please Enter Branch Name',
+                    },
+                    address: {
+                        required: 'Please Enter Branch Name',
+                    },
+                    phone: {
+                        required: 'Please Enter Branch Name',
+                    }
                 },
                 errorElement: 'span',
                 errorPlacement: function(error, element) {
