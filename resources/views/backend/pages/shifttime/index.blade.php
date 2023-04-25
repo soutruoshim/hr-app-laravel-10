@@ -11,7 +11,7 @@
                     <div class="page-title-box">
                         <div class="page-title-right">
                             <ol class="breadcrumb m-0">
-                                <a href="{{ route('add.position') }}" class="btn btn-blue waves-effect waves-light">Add Position</a>
+                                <a href="{{ route('add.shifttime') }}" class="btn btn-blue waves-effect waves-light">Add Position</a>
                             </ol>
                         </div>
                         <h4 class="page-title">All Position </h4>
@@ -30,25 +30,31 @@
                                 <thead>
                                     <tr>
                                         <th>Sl</th>
-                                        <th>DEPARTMENT</th>
-                                        <th>POSITION</th>
-                                        <th>Status</th>
-                                        <th>Action</th>
+                                        <th>OPENING TIME</th>
+                                        <th>CLOSING TIME</th>
+                                        <th>SHIFT</th>
+                                        <th>CATEGORY</th>
+                                        <th>HOLIDAY WEEK</th>
+                                        <th>STATUS</th>
+                                        <th>ACTION</th>
                                     </tr>
                                 </thead>
 
 
                                 <tbody>
-                                    @foreach ($positions as $key => $item)
+                                    @foreach ($shifttimes as $key => $item)
                                         <tr>
                                             <td>{{ $key + 1 }}</td>
-                                            <td>{{ $item->department->department_name}}</td>
-                                            <td>{{ $item->position_name }}</td>
+                                            <td>{{ $item->opening_time}}</td>
+                                            <td>{{ $item->closing_time }}</td>
+                                            <td>{{ $item->shift }}</td>
+                                            <td>{{ $item->category }}</td>
+                                            <td>{{ $item->week_holiday_count }}</td>
                                             <td>{{ $item->status }}</td>
                                             <td>
-                                                <a href="{{ route('edit.position', $item->id) }}"
+                                                <a href="{{ route('edit.shifttime', $item->id) }}"
                                                     class="btn btn-primary rounded-pill waves-effect waves-light">Edit</a>
-                                                <a href="{{ route('delete.position', $item->id) }}"
+                                                <a href="{{ route('delete.shifttime', $item->id) }}"
                                                     class="btn btn-danger rounded-pill waves-effect waves-light"
                                                     id="delete">Delete</a>
                                             </td>

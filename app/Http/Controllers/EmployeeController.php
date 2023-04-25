@@ -3,9 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Branch;
-use App\Models\Department;
 use App\Models\Employee;
 use App\Models\User;
+use App\Models\ShiftTime;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 
@@ -27,7 +27,8 @@ class EmployeeController extends Controller
     {
         $branchs = Branch::latest()->get();
         $employees = Employee::latest()->get();
-        return view('backend.pages.employee.employee_add', compact('branchs', 'employees'));
+        $shifttimes = ShiftTime::latest()->get();
+        return view('backend.pages.employee.employee_add', compact('branchs', 'employees', 'shifttimes'));
     }
 
     /**

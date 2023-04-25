@@ -11,6 +11,7 @@ use App\Http\Controllers\BranchController;
 use App\Http\Controllers\DepartmentController;
 use App\Http\Controllers\PositionController;
 use App\Http\Controllers\EmployeeController;
+use App\Http\Controllers\ShiftTimeController;
 use App\Http\Middleware\RedirectIfAuthenticated;
 use App\Http\Middleware\Role;
 
@@ -127,6 +128,17 @@ Route::middleware(['auth','role:admin'])->group(function() {
         Route::post('/update/employee/{id}','update')->name('employee.update');
         Route::get('/delete/employee/{id}','destroy')->name('delete.employee');
      });
+
+     // Shift Time
+     Route::controller(ShiftTimeController::class)->group(function(){
+        Route::get('/all/shifttime','index')->name('all.shifttime');
+        Route::get('/add/shifttime','create')->name('add.shifttime');
+        Route::post('/store/shifttime','store')->name('shifttime.store');
+        Route::get('/edit/shifttime/{id}','edit')->name('edit.shifttime');
+        Route::post('/update/shifttime/{id}','update')->name('shifttime.update');
+        Route::get('/delete/shifttime/{id}','destroy')->name('delete.shifttime');
+     });
+
 });
 
 

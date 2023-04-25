@@ -97,7 +97,7 @@ $status = $userid->status;
                         <ul class="nav-second-level">
                             @if(Auth::user()->can('shifttime'))
                             <li>
-                                <a href="#">Shift Time</a>
+                                <a href="{{ route('all.shifttime') }}">Shift Time</a>
                             </li>
                             @endif
                         </ul>

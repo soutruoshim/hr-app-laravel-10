@@ -14,10 +14,10 @@
                         <div class="page-title-right">
                             <ol class="breadcrumb m-0">
 
-                                <li class="breadcrumb-item active">Add Department</li>
+                                <li class="breadcrumb-item active">Add Shift Time</li>
                             </ol>
                         </div>
-                        <h4 class="page-title">Add Department</h4>
+                        <h4 class="page-title">Add Shift Time</h4>
                     </div>
                 </div>
             </div>
@@ -29,7 +29,7 @@
                     <div class="card">
                         <div class="card-body">
 
-                            <form id="myForm" method="post" action="{{ route('position.store') }}">
+                            <form id="myForm" method="post" action="{{ route('shifttime.store') }}">
                                 @csrf
 
                                 <div class="row">
@@ -67,13 +67,17 @@
                                             <option value="part_timer">Part timer</option>
                                         </select>
                                     </div>
-
+                                    <div class="col-lg-6 mb-3">
+                                        <label for="holiday" class="form-label">Weekly Holiday Count</label>
+                                        <input type="number" min="0" class="form-control" id="week_holiday_count"
+                                            name="week_holiday_count" value="" autocomplete="off" placeholder="">
+                                    </div>
                                     <div class="col-lg-6 mb-3">
                                         <label for="exampleFormControlSelect1" class="form-label">Status</label>
-                                        <select class="form-select" id="exampleFormControlSelect1" name="is_active">
+                                        <select class="form-select" id="exampleFormControlSelect1" name="status">
                                             <option value="" selected disabled>Select status</option>
-                                            <option value="1">Active</option>
-                                            <option value="0">Inactive</option>
+                                            <option value="active">Active</option>
+                                            <option value="inactive">Inactive</option>
                                         </select>
                                     </div>
 
@@ -82,11 +86,7 @@
                                         <textarea class="form-control" name="description" id="tinymceExample" rows="10"></textarea>
                                     </div>
 
-                                    <div class="col-lg-6 mb-3">
-                                        <label for="holiday" class="form-label">Weekly Holiday Count</label>
-                                        <input type="number" min="0" class="form-control" id="holiday_count"
-                                            name="holiday_count" value="" autocomplete="off" placeholder="">
-                                    </div>
+
                                 </div>
 
                                 <button type="submit" class="btn btn-primary waves-effect waves-light">Save

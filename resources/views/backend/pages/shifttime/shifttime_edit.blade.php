@@ -29,35 +29,63 @@
                     <div class="card">
                         <div class="card-body">
 
-                            <form id="myForm" method="post" action="{{ route('position.update', $position->id) }}">
+                            <form id="myForm" method="post" action="{{ route('shifttime.update', $shifttime->id) }}">
                                 @csrf
 
-                                <input type="hidden" name="id" value="{{ $position->id }}">
-
+                                <input type="hidden" name="id" value="{{ $shifttime->id }}">
                                 <div class="row">
-                                    <div class="form-group col-md-6 mb-3">
-                                        <label for="department_id" class="form-label">Department Name </label>
-                                        <select name="department_id" class="form-select" id="department_id">
-                                            <option>Select Department </option>
-                                            @foreach ($departments as $department)
-                                                <option value="{{ $department->id }}" @if($position->department_id == $department->id) selected @endif>{{ $department->department_name }}</option>
-                                            @endforeach
+
+                                    <div class="col-lg-6 mb-3">
+                                        <label for="opening_time" class="form-label"> Opening Time <span
+                                                style="color: red">*</span></label>
+                                        <input type="time" class="form-control" id="opening_time" name="opening_time" value="{{$shifttime->opening_time}}"
+                                            required autocomplete="off" placeholder="">
+                                    </div>
+
+                                    <div class="col-lg-6 mb-3">
+                                        <label for="closing_time" class="form-label"> Closing Time <span
+                                                style="color: red">*</span></label>
+                                        <input type="time" class="form-control" id="closing_time" name="closing_time" value="{{$shifttime->closing_time}}"
+                                            required autocomplete="off" placeholder="">
+                                    </div>
+
+                                    <div class="col-lg-6 mb-3">
+                                        <label for="shift" class="form-label">Shift <span
+                                                style="color: red">*</span></label>
+                                        <select class="form-select" id="exampleFormControlSelect1" name="shift" required>
+                                            <option value="" selected disabled>Select Shift</option>
+                                            <option value="morning" @if($shifttime->shift=='morning') selected @endif>Morning</option>
+                                            <option value="evening" @if($shifttime->shift=='evening') selected @endif>Evening</option>
+                                            <option value="night" @if($shifttime->shift=='night') selected @endif>Night</option>
                                         </select>
                                     </div>
 
-                                    <div class="form-group col-md-6 mb-3">
-                                        <label for="position_name" class="form-label">Position Name </label>
-                                        <input type="text" name="position_name" class="form-control" value="{{$position->position_name}}"
-                                            id="position_name" placeholder="Position Name">
+                                    <div class="col-lg-6 mb-3">
+                                        <label for="shift" class="form-label">Category</label>
+                                        <select class="form-select" id="exampleFormControlSelect1" name="category">
+                                            <option value="" disabled>Select Category</option>
+                                            <option value="full_timer" @if($shifttime->category=='full_timer') selected @endif>Full timer</option>
+                                            <option value="part_timer" @if($shifttime->category=='part_timer') selected @endif>Part timer</option>
+                                        </select>
                                     </div>
-                                    <div class="form-group col-md-6 mb-3">
+                                    <div class="col-lg-6 mb-3">
+                                        <label for="holiday" class="form-label">Weekly Holiday Count</label>
+                                        <input type="number" min="0" class="form-control" id="week_holiday_count" name="week_holiday_count" autocomplete="off" value="{{$shifttime->week_holiday_count}}" placeholder="">
+                                    </div>
+                                    <div class="col-lg-6 mb-3">
                                         <label for="exampleFormControlSelect1" class="form-label">Status</label>
                                         <select class="form-select" id="exampleFormControlSelect1" name="status">
                                             <option value="" disabled>Select status</option>
-                                            <option value="active" @if($position->status=='active') selected @endif>Active</option>
-                                            <option value="inactive" @if($position->status=='inactive') selected @endif>Inactive</option>
+                                            <option value="active" @if($shifttime->status=='active') selected @endif>Active</option>
+                                            <option value="inactive" @if($shifttime->status=='inactive') selected @endif>Inactive</option>
                                         </select>
                                     </div>
+
+                                    <div class="col-lg-6 mb-3">
+                                        <label for="description" class="form-label">Description</label>
+                                        <textarea class="form-control" name="description" id="tinymceExample" rows="10">{{$shifttime->description}}</textarea>
+                                    </div>
+
 
                                 </div>
                                 <button type="submit" class="btn btn-primary waves-effect waves-light">Save

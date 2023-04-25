@@ -210,7 +210,10 @@
 
                                         <select class="form-select" id="office_time" name="office_time" >
 
-
+                                            <option value="" selected disabled>Select Shift Time</option>
+                                            @foreach ($shifttimes as $shifttime)
+                                               <option value="{{ $shifttime->id }}" >{{ $shifttime->opening_time }} - {{ $shifttime->closing_time}} - {{$shifttime->shift}}</option>
+                                            @endforeach
 
                                         </select>
 
