@@ -21,7 +21,7 @@ return new class extends Migration
             $table->integer('branch_id');
             $table->integer('department_id');
             $table->integer('position_id');
-            $table->integer('supervisor');
+            $table->integer('supervisor')->nullable();
             $table->integer('office_time');
             $table->string('employment_type')->nullable();
             $table->string('user_type')->nullable();

@@ -106,15 +106,10 @@
                                             <option value="" selected disabled>Select Gender</option>
                                             <option value="male">
                                                 Male</option>
-
                                             <option value="female">
-
                                                 Female</option>
-
                                             <option value="others">
-
                                                 Others</option>
-
                                         </select>
 
                                     </div>
@@ -128,27 +123,16 @@
                                         <select class="form-select" id="role" name="role" required>
 
                                             <option value="" selected disabled>Select Role</option>
-
                                             <option value="1">
-
                                                 Admin</option>
-
                                             <option value="2">
-
                                                 Employee</option>
-
                                             <option value="3">
-
                                                 Supervisor</option>
-
                                             <option value="4">
-
                                                 Trainer</option>
-
                                             <option value="5">
-
                                                 Hr</option>
-
                                         </select>
 
                                     </div>
@@ -229,17 +213,11 @@
                                         <select class="form-select" id="employment_type" name="employment_type" required>
 
                                             <option value="" selected disabled>select employment type</option>
-
                                             <option value="contract">
-
                                                 Contract</option>
-
                                             <option value="permanent">
-
                                                 Permanent</option>
-
                                             <option value="temporary">
-
                                                 Temporary</option>
 
                                         </select>
@@ -256,13 +234,9 @@
                                         <select class="form-select" id="user_type" name="user_type" required>
 
                                             <option value="" selected disabled>select user type</option>
-
                                             <option value="field">
-
                                                 Field</option>
-
                                             <option value="nonField">
-
                                                 NonField</option>
 
                                         </select>
@@ -272,42 +246,28 @@
 
 
                                     <div class="col-lg-6 mb-3">
-
                                         <label for="joining_date" class="form-label"> Joining Date</label>
-
                                         <input type="date" class="form-control" id="joining_date" name="joining_date"
                                             value="" autocomplete="off" placeholder="Enter Joining Date">
-
                                     </div>
 
 
-
                                     <div class="col-lg-6 mb-3">
-
                                         <label for="workspace_type" class="form-label">WorkSpace</label>
-
                                         <select class="form-select" id="work_space" name="work_space">
-
                                             <option value="" selected disabled>select work place </option>
-
-                                            <option value="1">Office</option>
-
-                                            <option value="0">Home</option>
-
+                                            <option value="office">Office</option>
+                                            <option value="home">Home</option>
                                         </select>
-
                                     </div>
 
 
 
                                     <div class="col-lg-6 mb-3">
-
                                         <label for="bank_name" class="form-label">Bank Name <span
                                                 style="color: red">*</span></label>
-
                                         <input type="text" class="form-control" id="bank_name" name="bank_name"
                                             value="" autocomplete="off" placeholder="Enter Bank Name">
-
                                     </div>
 
 
@@ -316,7 +276,6 @@
 
                                         <label for="bank_account_no" class="form-label">Bank Account Number <span
                                                 style="color: red">*</span></label>
-
                                         <input type="number" class="form-control" id="bank_account"
                                             name="bank_account" value="" autocomplete="off"
                                             placeholder=" Enter Bank Account Number">
@@ -332,21 +291,13 @@
 
                                         <select class="form-select" id="bank_account_type" name="bank_account_type"
                                             required>
-
                                             <option value="" selected>select account type</option>
-
                                             <option value="saving">
-
                                                 Saving</option>
-
                                             <option value="current">
-
                                                 Current</option>
-
                                             <option value="salary">
-
                                                 Salary</option>
-
                                         </select>
 
                                     </div>
@@ -416,7 +367,6 @@
                                     <div class="col-lg-12 mb-3">
 
                                         <label for="tinymceExample" class="form-label">Description</label>
-
                                         <textarea class="form-control" name="description" id="tinymceExample" rows="2"></textarea>
 
                                     </div>

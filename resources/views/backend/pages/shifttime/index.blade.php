@@ -11,10 +11,10 @@
                     <div class="page-title-box">
                         <div class="page-title-right">
                             <ol class="breadcrumb m-0">
-                                <a href="{{ route('add.shifttime') }}" class="btn btn-blue waves-effect waves-light">Add Position</a>
+                                <a href="{{ route('add.shifttime') }}" class="btn btn-blue waves-effect waves-light">Add Shift Time</a>
                             </ol>
                         </div>
-                        <h4 class="page-title">All Position </h4>
+                        <h4 class="page-title">All Shift Time </h4>
                     </div>
                 </div>
             </div>

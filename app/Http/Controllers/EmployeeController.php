@@ -96,7 +96,12 @@ class EmployeeController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $branchs = Branch::latest()->get();
+        $employees = Employee::latest()->get();
+        $employee = Employee::findOrFail($id);
+        $shifttimes = ShiftTime::latest()->get();
+
+        return view('backend.pages.employee.employee_edit', compact('branchs','employee', 'employees', 'shifttimes'));
     }
 
     /**

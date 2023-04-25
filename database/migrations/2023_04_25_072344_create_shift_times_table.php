@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('shift_times', function (Blueprint $table) {
             $table->id();
-            $table->string('opening_time')->nullable();
-            $table->string('closing_time')->nullable();
+            $table->time('opening_time')->nullable();
+            $table->time('closing_time')->nullable();
             $table->string('shift')->nullable();
             $table->string('category')->nullable();
             $table->string('description')->nullable();

@@ -53,7 +53,7 @@
                                             <td>{{ $item->phone }}</td>
                                             <td>{{ $item->user->role }}</td>
                                             <td>{{ $item->work_space }}</td>
-                                            <td>{{ $item->status }}</td>
+                                            <td>{{ $item->user_status }}</td>
                                             <td>
                                                 <a href="{{ route('edit.position', $item->id) }}"
                                                     class="btn btn-primary rounded-pill waves-effect waves-light">Edit</a>
