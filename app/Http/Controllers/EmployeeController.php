@@ -117,6 +117,16 @@ class EmployeeController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $employee =  Employee::findOrFail($id);
+
+        User::findOrFail($employee->user_id);
+        $employee->delete();
+
+        $notification = array(
+           'message' => 'Employee Deleted Successfully',
+           'alert-type' => 'success'
+        );
+
+       return redirect()->back()->with($notification);
     }
 }
