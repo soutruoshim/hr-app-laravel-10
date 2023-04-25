@@ -58,7 +58,7 @@ $status = $userid->status;
                             @endif
                             @if(Auth::user()->can('position'))
                             <li>
-                                <a href="#">Position</a>
+                                <a href="{{ route('all.position') }}">Position</a>
                             </li>
                             @endif
 
@@ -78,8 +78,7 @@ $status = $userid->status;
                         <ul class="nav-second-level">
                             @if(Auth::user()->can('employees'))
                             <li>
-                                <!-- <a href="{{ route('all.category') }}">Company</a> -->
-                                <a href="#">Employees</a>
+                                <a href="{{ route('all.employee') }}">Employees</a>
                             </li>
                             @endif
                         </ul>
@@ -87,26 +86,20 @@ $status = $userid->status;
                 </li>
                 @endif
 
-                @if(Auth::user()->can('subcategory.menu'))
+                @if(Auth::user()->can('shifttime.management'))
                 <li>
                     <a href="#sidebarEcommerce1" data-bs-toggle="collapse">
-                        <i class="mdi mdi-cart-outline"></i>
-                        <span> SubCategory </span>
+                        <i class="mdi mdi-calendar-clock"></i>
+                        <span> Shift Time </span>
                         <span class="menu-arrow"></span>
                     </a>
                     <div class="collapse" id="sidebarEcommerce1">
                         <ul class="nav-second-level">
-                            @if(Auth::user()->can('subcategory.list'))
+                            @if(Auth::user()->can('shifttime'))
                             <li>
-                                <a href="{{ route('all.subcategory') }}">All SubCategory</a>
+                                <a href="#">Shift Time</a>
                             </li>
                             @endif
-                            @if(Auth::user()->can('subcategory.add'))
-                            <li>
-                                <a href="{{ route('add.subcategory') }}">Add SubCategory</a>
-                            </li>
-                            @endif
-
                         </ul>
                     </div>
                 </li>

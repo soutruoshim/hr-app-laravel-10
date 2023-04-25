@@ -52,7 +52,7 @@
                     <option value="employee-management">Employee Management</option>
                     <option value="attendance-section">Banner </option>
                     <option value="leave-management">Photo </option>
-                    <option value="shift-management">Video  </option>
+                    <option value="shift-management">Shift-Management  </option>
                     <option value="holidays">Live  </option>
                     <option value="notice">Review  </option>
                     <option value="admin">Admin Setting</option>

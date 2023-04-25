@@ -87,6 +87,7 @@ class DepartmentController extends Controller
         );
 
         return redirect()->route('all.department')->with($notification);
+
     }
 
     /**
@@ -103,5 +104,10 @@ class DepartmentController extends Controller
        );
 
        return redirect()->back()->with($notification);
+    }
+
+    public function getDepartmentByBrand($branch_id){
+        $departments = Department::where('branch_id',$branch_id)->get();
+        return json_encode($departments);
     }
 }

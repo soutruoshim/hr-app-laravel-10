@@ -9,6 +9,8 @@ use App\Http\Controllers\RoleController;
 use App\Http\Controllers\CompanyController;
 use App\Http\Controllers\BranchController;
 use App\Http\Controllers\DepartmentController;
+use App\Http\Controllers\PositionController;
+use App\Http\Controllers\EmployeeController;
 use App\Http\Middleware\RedirectIfAuthenticated;
 use App\Http\Middleware\Role;
 
@@ -100,7 +102,31 @@ Route::middleware(['auth','role:admin'])->group(function() {
         Route::get('/edit/department/{id}','edit')->name('edit.department');
         Route::post('/update/department/{id}','update')->name('department.update');
         Route::get('/delete/department/{id}','destroy')->name('delete.department');
+
+        Route::get('/department/ajax/{brand_id}', 'getDepartmentByBrand');
     });
+
+     // position
+     Route::controller(PositionController::class)->group(function(){
+        Route::get('/all/position','index')->name('all.position');
+        Route::get('/add/position','create')->name('add.position');
+        Route::post('/store/position','store')->name('position.store');
+        Route::get('/edit/position/{id}','edit')->name('edit.position');
+        Route::post('/update/position/{id}','update')->name('position.update');
+        Route::get('/delete/position/{id}','destroy')->name('delete.position');
+
+        Route::get('/position/ajax/{department_id}', 'getPositionByDepartment');
+     });
+
+      // employee
+      Route::controller(EmployeeController::class)->group(function(){
+        Route::get('/all/employee','index')->name('all.employee');
+        Route::get('/add/employee','create')->name('add.employee');
+        Route::post('/store/employee','store')->name('employee.store');
+        Route::get('/edit/employee/{id}','edit')->name('edit.employee');
+        Route::post('/update/employee/{id}','update')->name('employee.update');
+        Route::get('/delete/employee/{id}','destroy')->name('delete.employee');
+     });
 });
 
 
