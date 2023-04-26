@@ -12,6 +12,7 @@ use App\Http\Controllers\DepartmentController;
 use App\Http\Controllers\PositionController;
 use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\ShiftTimeController;
+use App\Http\Controllers\MeetingController;
 use App\Http\Middleware\RedirectIfAuthenticated;
 use App\Http\Middleware\Role;
 
@@ -138,6 +139,16 @@ Route::middleware(['auth','role:admin'])->group(function() {
         Route::post('/update/shifttime/{id}','update')->name('shifttime.update');
         Route::get('/delete/shifttime/{id}','destroy')->name('delete.shifttime');
      });
+
+     // Meeting
+      Route::controller(MeetingController::class)->group(function(){
+        Route::get('/all/meeting','index')->name('all.meeting');
+        Route::get('/add/meeting','create')->name('add.meeting');
+        Route::post('/store/meeting','store')->name('meeting.store');
+        Route::get('/edit/meeting/{id}','edit')->name('edit.meeting');
+        Route::post('/update/meeting/{id}','update')->name('meeting.update');
+        Route::get('/delete/meeting/{id}','destroy')->name('delete.meeting');
+      });
 
 });
 

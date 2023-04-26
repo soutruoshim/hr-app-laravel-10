@@ -131,8 +131,9 @@ $status = $userid->status;
                         <span> Attendance </span>
                     </a>
                 </li>
+
                 <li>
-                    <a href="#">
+                    <a href="{{ route('all.meeting') }}">
                         <i class="mdi mdi-message-video"></i>
                         <span> Team meeting </span>
                     </a>

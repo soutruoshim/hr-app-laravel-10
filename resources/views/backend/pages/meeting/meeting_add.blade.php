@@ -28,7 +28,7 @@
                 <div class="col-12">
                     <div class="card">
                         <div class="card-body">
-                            <form id="myForm" method="post" action="{{ route('position.store') }}">
+                            <form id="myForm" method="post" action="{{ route('meeting.store') }}" enctype="multipart/form-data">
                                 @csrf
                                 <div class="row">
                                     <div class="col-lg-6 mb-3">
@@ -39,17 +39,17 @@
                                     </div>
 
                                     <div class="col-lg-6 mb-3">
-                                        <label for="meeting_date" class="form-label"> Meeting Date <span
+                                        <label for="date" class="form-label"> Meeting Date <span
                                                 style="color: red">*</span></label>
-                                        <input type="date" class="form-control" id="meeting_date" name="meeting_date"
+                                        <input type="date" class="form-control" id="date" name="date"
                                             required value="" autocomplete="off">
                                     </div>
 
                                     <div class="col-lg-6 mb-3">
-                                        <label for="meeting_start_time" class="form-label"> Meeting Start Time <span
+                                        <label for="start_time" class="form-label"> Meeting Start Time <span
                                                 style="color: red">*</span> </label>
-                                        <input type="time" class="form-control" id="meeting_start_time"
-                                            name="meeting_start_time" required value="" autocomplete="off">
+                                        <input type="time" class="form-control" id="start_time"
+                                            name="start_time" required value="" autocomplete="off">
                                     </div>
 
                                     <div class="col-lg-6 mb-3">
@@ -62,40 +62,20 @@
                                     <div class="col-lg-6 mb-3">
                                         <label for="description" class="form-label">Meeting Description <span
                                                 style="color: red">*</span></label>
-                                        <textarea class="form-control" minlength="10" name="description" id="" rows="6"> </textarea>
+                                        <textarea class="form-control" minlength="10" name="description" id="description" rows="6"> </textarea>
                                     </div>
 
                                     <div class="col-lg-12 mb-3">
                                         <label for="employee" class="form-label">Meeting participator <span
                                                 style="color: red">*</span></label>
                                         <br>
-                                        <select class=" col-md-12 from-select" id="team_meeting"
-                                            name="participator[][meeting_participator_id]" multiple="multiple" required>
+                                        <select class="col-md-12 from-select select2" id="team_meeting"
+                                            name="employees[]" multiple="multiple" required>
+                                            @foreach ($employees as $employee)
+                                               <option value="{{ $employee->id }}" >{{ $employee->user->name }}</option>
+                                            @endforeach
                                             <option value="1">Admin</option>
-                                            <option value="2">Employee</option>
-                                            <option value="5">Balvinder</option>
-                                            <option value="15">Testmy</option>
-                                            <option value="34">Kunu Emp</option>
-                                            <option value="39">Ishwar Rathod</option>
-                                            <option value="40">Ali</option>
-                                            <option value="41">Test</option>
-                                            <option value="42">Mosab</option>
-                                            <option value="43">Klasik</option>
-                                            <option value="44">Betho</option>
-                                            <option value="45">Duc Nam</option>
-                                            <option value="46">Ahmed</option>
-                                            <option value="47">Emin Kokalari</option>
-                                            <option value="48">Tester</option>
-                                            <option value="49">Ridgeway</option>
-                                            <option value="50">Thắng</option>
-                                            <option value="51">Eng moha</option>
-                                            <option value="52">Ashraf Al-hakimi</option>
-                                            <option value="53">Ashraf Al-hakimi</option>
-                                            <option value="54">Francisco</option>
-                                            <option value="55">Ashraf Al-hakimi</option>
-                                            <option value="56">Ashraf Al-hakimi</option>
-                                            <option value="57">Bta</option>
-                                            <option value="58">MIKI</option>
+
                                         </select>
                                     </div>
 
@@ -127,6 +107,11 @@
 
     <script type="text/javascript">
         $(document).ready(function() {
+
+            $(".select2").select2({
+
+            });
+
             $('#myForm').validate({
                 rules: {
                     department_name: {
