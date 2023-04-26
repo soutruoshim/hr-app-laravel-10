@@ -23,13 +23,14 @@
             </div>
             <!-- end page title -->
 
+
             <!-- Form row -->
             <div class="row">
                 <div class="col-12">
                     <div class="card">
                         <div class="card-body">
 
-                            <form id="myForm" method="post" action="{{ route('employee.store') }}">
+                            <form id="myForm" method="post" action="{{ route('employee.store') }}" enctype="multipart/form-data">
                                 @csrf
 
                                 <div class="row">
@@ -123,15 +124,15 @@
                                         <select class="form-select" id="role" name="role" required>
 
                                             <option value="" selected disabled>Select Role</option>
-                                            <option value="1">
+                                            <option value="admin">
                                                 Admin</option>
-                                            <option value="2">
+                                            <option value="employee">
                                                 Employee</option>
-                                            <option value="3">
+                                            <option value="supervisor">
                                                 Supervisor</option>
-                                            <option value="4">
+                                            <option value="trainer">
                                                 Trainer</option>
-                                            <option value="5">
+                                            <option value="hr">
                                                 Hr</option>
                                         </select>
 
@@ -343,9 +344,8 @@
 
                                             <option value="" selected disabled>select status </option>
 
-                                            <option value="1">Active</option>
-
-                                            <option value="0">Inactive</option>
+                                            <option value="active">Active</option>
+                                            <option value="inactive">Inactive</option>
 
                                         </select>
 

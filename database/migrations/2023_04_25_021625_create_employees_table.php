@@ -25,7 +25,7 @@ return new class extends Migration
             $table->integer('office_time');
             $table->string('employment_type')->nullable();
             $table->string('user_type')->nullable();
-            $table->string('joining_date')->nullable();
+            $table->date('joining_date')->nullable();
             $table->string('work_space')->nullable();
             $table->string('bank_name')->nullable();
             $table->string('bank_account')->nullable();
