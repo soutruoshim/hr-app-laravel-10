@@ -60,7 +60,7 @@
                                         <label for="password" class="form-label">Password <span
                                                 style="color: red">*</span></label>
                                         <input type="password" class="form-control" id="password" name="password" value=""
-                                           autocomplete="off" placeholder="Enter password" required>
+                                           autocomplete="off" placeholder="Enter password">
                                     </div>
 
 
@@ -91,8 +91,8 @@
                                         <label for="number" class="form-label">Phone No <span
                                                 style="color: red">*</span></label>
 
-                                        <input type="number" class="form-control" id="phone" name="phone"
-                                            value="" required autocomplete="off" placeholder="">
+                                        <input type="number" class="form-control" id="phone" name="phone" value="{{$employee->phone}}"
+                                            required autocomplete="off" placeholder="">
 
                                     </div>
 
@@ -118,11 +118,11 @@
 
                                         <select class="form-select" id="role" name="role" required>
                                             <option value="" selected disabled>Select Role</option>
-                                            <option value="admin" @if($employee->role == 'admin') selected @endif>Admin</option>
-                                            <option value="employee" @if($employee->role == 'employee') selected @endif>Employee</option>
-                                            <option value="supervisor" @if($employee->role == 'supervisor') selected @endif>Supervisor</option>
-                                            <option value="trainer" @if($employee->role == 'trainer') selected @endif>Trainer</option>
-                                            <option value="hr" @if($employee->role == 'hr') selected @endif>Hr</option>
+                                            <option value="admin" @if($employee->user->role == 'admin') selected @endif>Admin</option>
+                                            <option value="employee" @if($employee->user->role == 'employee') selected @endif>Employee</option>
+                                            <option value="supervisor" @if($employee->user->role == 'supervisor') selected @endif>Supervisor</option>
+                                            <option value="trainer" @if($employee->user->role == 'trainer') selected @endif>Trainer</option>
+                                            <option value="hr" @if($employee->user->role == 'hr') selected @endif>Hr</option>
                                         </select>
 
                                     </div>
@@ -340,7 +340,7 @@
                                                 style="color: red">*</span> </label>
 
                                         <input class="form-control" type="file" id="avatar" name="avatar"
-                                            value="" required>
+                                            value="">
                                         <img src="@if(!empty($employee->upload_avatar)) {{ asset($employee->upload_avatar) }} @else  https://digitalhr.cyclonenepal.com/uploads/company/logo/Thumb-643e5a9c1197a_m2.png @endif"
                                             alt="" style="object-fit: contain" class="mt-3" width="150">
                                     </div>

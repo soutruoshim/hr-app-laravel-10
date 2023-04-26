@@ -234,7 +234,7 @@ class EmployeeController extends Controller
             'alert-type' => 'success'
         );
 
-        return redirect()->route('all.position')->with($notification);
+        return redirect()->route('all.employee')->with($notification);
     }
 
     /**
@@ -243,9 +243,14 @@ class EmployeeController extends Controller
     public function destroy(string $id)
     {
         $employee =  Employee::findOrFail($id);
+        $user = User::findOrFail($employee->user_id);
 
-        User::findOrFail($employee->user_id);
+        // delete old image
+        $img = $employee->upload_avatar;
+        if(!empty($img)) unlink($img);
+
         $employee->delete();
+        $user->delete();
 
         $notification = array(
            'message' => 'Employee Deleted Successfully',
