@@ -67,25 +67,6 @@ $status = $userid->status;
                 </li>
                 @endif
 
-                @if(Auth::user()->can('employee.management'))
-                <li>
-                    <a href="#sidebarEmployee" data-bs-toggle="collapse">
-                    <i class="mdi mdi-account-multiple-outline"></i>
-                        <span> Employee </span>
-                        <span class="menu-arrow"></span>
-                    </a>
-                    <div class="collapse" id="sidebarEmployee">
-                        <ul class="nav-second-level">
-                            @if(Auth::user()->can('employees'))
-                            <li>
-                                <a href="{{ route('all.employee') }}">Employees</a>
-                            </li>
-                            @endif
-                        </ul>
-                    </div>
-                </li>
-                @endif
-
                 @if(Auth::user()->can('shifttime.management'))
                 <li>
                     <a href="#sidebarEcommerce1" data-bs-toggle="collapse">
@@ -105,23 +86,18 @@ $status = $userid->status;
                 </li>
                 @endif
 
-                @if(Auth::user()->can('news.menu'))
+                @if(Auth::user()->can('employee.management'))
                 <li>
-                    <a href="#newspost" data-bs-toggle="collapse">
-                        <i class="mdi mdi-cart-outline"></i>
-                        <span> News Post Setting </span>
+                    <a href="#sidebarEmployee" data-bs-toggle="collapse">
+                    <i class="mdi mdi-account-multiple-outline"></i>
+                        <span> Employee </span>
                         <span class="menu-arrow"></span>
                     </a>
-                    <div class="collapse" id="newspost">
+                    <div class="collapse" id="sidebarEmployee">
                         <ul class="nav-second-level">
-                            @if(Auth::user()->can('news.list'))
+                            @if(Auth::user()->can('employees'))
                             <li>
-                                <a href="{{ route('all.news.post') }}">All News Post</a>
-                            </li>
-                            @endif
-                            @if(Auth::user()->can('news.add'))
-                            <li>
-                                <a href="{{ route('add.news.post') }}">Add News Post</a>
+                                <a href="{{ route('all.employee') }}">Employees</a>
                             </li>
                             @endif
                         </ul>
@@ -129,131 +105,56 @@ $status = $userid->status;
                 </li>
                 @endif
 
-
-                @if(Auth::user()->can('banner.menu'))
                 <li>
-                    <a href="#banner" data-bs-toggle="collapse">
-                        <i class="mdi mdi-cart-outline"></i>
-                        <span> Banner Setting </span>
+                    <a href="#sidebarpermission" data-bs-toggle="collapse">
+                        <i class="mdi mdi-book-multiple"></i>
+                        <span> Leave </span>
                         <span class="menu-arrow"></span>
                     </a>
-                    <div class="collapse" id="banner">
+                    <div class="collapse" id="sidebarpermission">
                         <ul class="nav-second-level">
-
                             <li>
-                                <a href="{{ route('all.banners') }}">All Banner</a>
+                                <a href="{{ route('all.permission') }}">Leave Type</a>
                             </li>
-
-
+                            <li>
+                                <a href="{{ route('all.roles') }}">Leave Request</a>
+                            </li>
                         </ul>
                     </div>
                 </li>
-                @endif
 
 
 
-                @if(Auth::user()->can('photo.menu'))
                 <li>
-                    <a href="#sidebarEmail" data-bs-toggle="collapse">
-                        <i class="mdi mdi-email-multiple-outline"></i>
-                        <span> Photo Setting </span>
-                        <span class="menu-arrow"></span>
+                    <a href="#">
+                        <i class="mdi mdi-calendar-multiple-check"></i>
+                        <span> Attendance </span>
                     </a>
-                    <div class="collapse" id="sidebarEmail">
-                        <ul class="nav-second-level">
-                            <li>
-                                <a href="{{ route('all.photo.gallery') }}">Photo Gallery</a>
-                            </li>
-
-                        </ul>
-                    </div>
                 </li>
-                @endif
-
-
-                @if(Auth::user()->can('video.menu'))
                 <li>
-                    <a href="#video" data-bs-toggle="collapse">
-                        <i class="mdi mdi-email-multiple-outline"></i>
-                        <span> Video Setting </span>
-                        <span class="menu-arrow"></span>
+                    <a href="#">
+                        <i class="mdi mdi-message-video"></i>
+                        <span> Team meeting </span>
                     </a>
-                    <div class="collapse" id="video">
-                        <ul class="nav-second-level">
-                            <li>
-                                <a href="{{ route('all.video.gallery') }}">Video Gallery</a>
-                            </li>
-
-                        </ul>
-                    </div>
                 </li>
-                @endif
-
-
-                @if(Auth::user()->can('live.menu'))
                 <li>
-                    <a href="#live" data-bs-toggle="collapse">
-                        <i class="mdi mdi-email-multiple-outline"></i>
-                        <span> Live Tv Setting </span>
-                        <span class="menu-arrow"></span>
+                    <a href="#">
+                        <i class="mdi mdi-calendar-remove"></i>
+                        <span> Holiday </span>
                     </a>
-                    <div class="collapse" id="live">
-                        <ul class="nav-second-level">
-                            <li>
-                                <a href="{{ route('update.live.tv') }}">Update Live TV</a>
-                            </li>
-
-                        </ul>
-                    </div>
                 </li>
-                @endif
-
-
-                @if(Auth::user()->can('review.menu'))
                 <li>
-                    <a href="#review" data-bs-toggle="collapse">
-                        <i class="mdi mdi-email-multiple-outline"></i>
-                        <span> Review Setting </span>
-                        <span class="menu-arrow"></span>
+                    <a href="#">
+                        <i class="mdi mdi-calendar-text"></i>
+                        <span> Notice </span>
                     </a>
-                    <div class="collapse" id="review">
-                        <ul class="nav-second-level">
-                            <li>
-                                <a href="{{ route('pending.review') }}">Pending Review</a>
-                            </li>
-
-                            <li>
-                                <a href="{{ route('approve.review') }}">Approve Review</a>
-                            </li>
-
-                        </ul>
-                    </div>
                 </li>
-                @endif
-
-
-                @if(Auth::user()->can('seo.menu'))
                 <li>
-                    <a href="#review" data-bs-toggle="collapse">
-                        <i class="mdi mdi-email-multiple-outline"></i>
-                        <span> Seo Setting </span>
-                        <span class="menu-arrow"></span>
+                    <a href="#">
+                        <i class="mdi mdi-content-paste"></i>
+                        <span> Content management </span>
                     </a>
-                    <div class="collapse" id="review">
-                        <ul class="nav-second-level">
-                            <li>
-                                <a href="{{ route('seo.setting') }}">Update Seo </a>
-                            </li>
-
-
-
-                        </ul>
-                    </div>
                 </li>
-                @endif
-
-
-
 
                 <li class="menu-title mt-2">Setting</li>
 
