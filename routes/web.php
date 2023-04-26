@@ -13,6 +13,7 @@ use App\Http\Controllers\PositionController;
 use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\ShiftTimeController;
 use App\Http\Controllers\MeetingController;
+use App\Http\Controllers\NoticeController;
 use App\Http\Middleware\RedirectIfAuthenticated;
 use App\Http\Middleware\Role;
 
@@ -148,6 +149,16 @@ Route::middleware(['auth','role:admin'])->group(function() {
         Route::get('/edit/meeting/{id}','edit')->name('edit.meeting');
         Route::post('/update/meeting/{id}','update')->name('meeting.update');
         Route::get('/delete/meeting/{id}','destroy')->name('delete.meeting');
+      });
+
+      // Notice
+      Route::controller(NoticeController::class)->group(function(){
+        Route::get('/all/notice','index')->name('all.notice');
+        Route::get('/add/notice','create')->name('add.notice');
+        Route::post('/store/notice','store')->name('notice.store');
+        Route::get('/edit/notice/{id}','edit')->name('edit.notice');
+        Route::post('/update/notice/{id}','update')->name('notice.update');
+        Route::get('/delete/notice/{id}','destroy')->name('delete.notice');
       });
 
 });

@@ -39,7 +39,6 @@ class MeetingController extends Controller
             $save_url = 'upload/meeting/'.$name_gen;
 
             $meeting = Meeting::create([
-
                 'title' => $request->title,
                 'date' => $request->date,
                 'start_time' => $request->start_time,
@@ -99,7 +98,68 @@ class MeetingController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $id = $request->id;
+        if($request->file('image')){
+            $image = $request->file('image');
+            $name_gen = hexdec(uniqid()).'.'.$image->getClientOriginalExtension();
+            Image::make($image)->resize(200,200)->save('upload/meeting/'.$name_gen);
+            $save_url = 'upload/meeting/'.$name_gen;
+
+            $meeting = Meeting::findOrFail($id);
+            MeetingEmployee::where('meeting_id', $meeting->id)->delete();
+
+            // delete old image
+            $img = $meeting->image;
+            if(!empty($img)) unlink($img);
+
+            $meeting->update([
+                'title' => $request->title,
+                'date' => $request->date,
+                'start_time' => $request->start_time,
+                'venue' => $request->venue,
+                'description' => $request->description,
+                'image' => $save_url
+            ]);
+
+            if(!empty($_POST['employees'])) {
+                foreach($_POST['employees'] as $selected){
+                    MeetingEmployee::insert([
+                        'meeting_id' => $meeting->id,
+                        'employee_id' => $selected
+                    ]);
+                }
+            }
+
+
+        }else{
+            $meeting = Meeting::findOrFail($id);
+
+            MeetingEmployee::where('meeting_id', $meeting->id)->delete();
+
+            $meeting->update([
+                'title' => $request->title,
+                'date' => $request->date,
+                'start_time' => $request->start_time,
+                'venue' => $request->venue,
+                'description' => $request->description
+            ]);
+
+            if(!empty($_POST['employees'])) {
+                foreach($_POST['employees'] as $selected){
+                    MeetingEmployee::insert([
+                        'meeting_id' => $meeting->id,
+                        'employee_id' => $selected
+                    ]);
+                }
+            }
+        }
+
+        $notification = array(
+            'message' => 'Employee Updated Successfully',
+            'alert-type' => 'success'
+        );
+
+        return redirect()->route('all.meeting')->with($notification);
     }
 
     /**
@@ -107,6 +167,21 @@ class MeetingController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $meeting = Meeting::findOrFail($id);
+
+        MeetingEmployee::where('meeting_id', $meeting->id)->delete();
+
+        $img = $meeting->image;
+        if(!empty($img)) unlink($img);
+
+        $meeting->delete();
+
+        $notification = array(
+           'message' => 'Meeting Deleted Successfully',
+           'alert-type' => 'success'
+
+       );
+
+       return redirect()->back()->with($notification);
     }
 }

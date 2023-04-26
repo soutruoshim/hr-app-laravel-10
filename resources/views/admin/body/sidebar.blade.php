@@ -145,7 +145,7 @@ $status = $userid->status;
                     </a>
                 </li>
                 <li>
-                    <a href="#">
+                    <a href="{{ route('all.notice') }}">
                         <i class="mdi mdi-calendar-text"></i>
                         <span> Notice </span>
                     </a>

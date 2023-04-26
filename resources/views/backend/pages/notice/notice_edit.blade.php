@@ -78,7 +78,7 @@
                                             @foreach ($employees as $employee)
                                                 <option value="{{ $employee->id }}" @if(in_array($employee->id, $emp_selected)) selected @endif>{{ $employee->user->name }}</option>
                                             @endforeach
-
+                                            <option value="1">Admin</option>
 
                                         </select>
                                     </div>

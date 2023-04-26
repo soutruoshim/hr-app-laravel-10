@@ -14,10 +14,10 @@
                         <div class="page-title-right">
                             <ol class="breadcrumb m-0">
 
-                                <li class="breadcrumb-item active">Add Meeting</li>
+                                <li class="breadcrumb-item active">Add Notice</li>
                             </ol>
                         </div>
-                        <h4 class="page-title">Add Meeting</h4>
+                        <h4 class="page-title">Add Notice</h4>
                     </div>
                 </div>
             </div>
@@ -28,63 +28,40 @@
                 <div class="col-12">
                     <div class="card">
                         <div class="card-body">
-                            <form id="myForm" method="post" action="{{ route('meeting.store') }}" enctype="multipart/form-data">
+                            <form id="myForm" method="post" action="{{ route('notice.store') }}" enctype="multipart/form-data">
                                 @csrf
                                 <div class="row">
                                     <div class="col-lg-6 mb-3">
-                                        <label for="title" class="form-label"> Meeting title <span
+                                        <label for="title" class="form-label"> Notice title<span
                                                 style="color: red">*</span></label>
                                         <input type="text" class="form-control" id="title" name="title" required
                                             value="" autocomplete="off" placeholder="Enter Content Title">
                                     </div>
-
                                     <div class="col-lg-6 mb-3">
-                                        <label for="date" class="form-label"> Meeting Date <span
-                                                style="color: red">*</span></label>
-                                        <input type="date" class="form-control" id="date" name="date"
-                                            required value="" autocomplete="off">
-                                    </div>
-
-                                    <div class="col-lg-6 mb-3">
-                                        <label for="start_time" class="form-label"> Meeting Start Time <span
-                                                style="color: red">*</span> </label>
-                                        <input type="time" class="form-control" id="start_time"
-                                            name="start_time" required value="" autocomplete="off">
-                                    </div>
-
-                                    <div class="col-lg-6 mb-3">
-                                        <label for="venue" class="form-label"> Meeting Venue <span
-                                                style="color: red">*</span> </label>
-                                        <input type="text" class="form-control" id="venue" name="venue" required
-                                            value="" autocomplete="off" placeholder="Enter venue">
-                                    </div>
-
-                                    <div class="col-lg-6 mb-3">
-                                        <label for="description" class="form-label">Meeting Description <span
+                                        <label for="description" class="form-label">Notice Description <span
                                                 style="color: red">*</span></label>
                                         <textarea class="form-control" minlength="10" name="description" id="description" rows="6"> </textarea>
                                     </div>
 
                                     <div class="col-lg-12 mb-3">
-                                        <label for="employee" class="form-label">Meeting participator <span
+                                        <label for="employees" class="form-label">Notice Receiver <span
                                                 style="color: red">*</span></label>
                                         <br>
-                                        <select class="col-md-12 from-select select2" id="team_meeting"
+                                        <select class="col-md-12 from-select select2" id="employees"
                                             name="employees[]" multiple="multiple" required>
                                             @foreach ($employees as $employee)
                                                <option value="{{ $employee->id }}" >{{ $employee->user->name }}</option>
                                             @endforeach
-
-
                                         </select>
                                     </div>
 
-                                    <div class="col-lg-12 mb-3">
-                                        <label for="image" class="form-label">Upload Image</label>
-                                        <input class="form-control" type="file"
-                                            accept="image/png, image/jpeg,image/jpg, image/svg," id="image"
-                                            name="image" />
-                                        <small>*Image is recommended to be in landscape form</small>
+                                    <div class="form-group col-md-6 mb-3">
+                                        <label for="exampleFormControlSelect1" class="form-label">Status</label>
+                                        <select class="form-select" id="exampleFormControlSelect1" name="status">
+                                            <option value="" disabled>Select status</option>
+                                            <option value="active">Active</option>
+                                            <option value="inactive">Inactive</option>
+                                        </select>
                                     </div>
                                 </div>
 
