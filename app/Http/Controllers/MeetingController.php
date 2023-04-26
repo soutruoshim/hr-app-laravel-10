@@ -81,7 +81,17 @@ class MeetingController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $meeting = Meeting::findOrFail($id);
+        $employees = Employee::latest()->get();
+
+        $emp_selected = [];
+
+        foreach($meeting->meeting_employee as $emp){
+           $emp_selected[] = $emp->employee_id;
+        }
+
+
+        return view('backend.pages.meeting.meeting_edit',compact('meeting', 'employees', 'emp_selected'));
     }
 
     /**
