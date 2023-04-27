@@ -11,11 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('contents', function (Blueprint $table) {
+        Schema::create('leave_types', function (Blueprint $table) {
             $table->id();
-            $table->string('title')->nullable();
-            $table->string('content_type')->nullable();
-            $table->text('description')->nullable();
+            $table->string('leave_type_name')->nullable();
+            $table->integer('leave_allocated')->nullable();
+            $table->string('paid_leave')->nullable();
             $table->enum('status',['active','inactive'])->default('active');
             $table->timestamps();
         });
@@ -26,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('contents');
+        Schema::dropIfExists('leave_types');
     }
 };

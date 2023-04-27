@@ -14,10 +14,10 @@
                         <div class="page-title-right">
                             <ol class="breadcrumb m-0">
 
-                                <li class="breadcrumb-item active">Add Position</li>
+                                <li class="breadcrumb-item active">Add Content</li>
                             </ol>
                         </div>
-                        <h4 class="page-title">Add Position</h4>
+                        <h4 class="page-title">Add Content</h4>
                     </div>
                 </div>
             </div>
@@ -29,26 +29,26 @@
                     <div class="card">
                         <div class="card-body">
 
-                            <form id="myForm" method="post" action="{{ route('position.store') }}">
+                            <form id="myForm" method="post" action="{{ route('content.store') }}">
                                 @csrf
-
                                 <div class="row">
-
-                                    <div class="form-group col-md-6 mb-3">
-                                        <label for="department_id" class="form-label">Department Name </label>
-                                        <select name="department_id" class="form-select" id="department_id">
-                                            <option>Select Department </option>
-                                            @foreach ($departments as $department)
-                                                <option value="{{ $department->id }}" >{{ $department->department_name }}</option>
-                                            @endforeach
-                                        </select>
+                                    <div class="col-lg-6 mb-3">
+                                        <label for="title" class="form-label"> Content Title <span style="color: red">*</span> </label>
+                                        <input type="text" class="form-control" id="title" name="title" required value="" autocomplete="off" placeholder="Enter Content Title">
                                     </div>
 
-                                    <div class="form-group col-md-6 mb-3">
-                                        <label for="position_name" class="form-label">Position Name </label>
-                                        <input type="text" name="position_name" class="form-control"
-                                            id="position_name" placeholder="Position Name">
+                                    <div class="col-lg-6 mb-3">
+                                        <label for="content_type" class="form-label">Content Type <span style="color: red">*</span></label>
+                                        <select class="form-select" id="exampleFormControlSelect1" name="content_type" required>
+                                            <option value=""  selected>Select Content Type</option>
+                                                            <option value="company-rules"  >Company-rules</option>
+                                                            <option value="terms-and-conditions"  >Terms-and-conditions</option>
+                                                            <option value="about-us"  >About-us</option>
+                                                            <option value="app-policy"  >App-policy</option>
+                                                            <option value="company-policy"  >Company-policy</option>
+                                            </select>
                                     </div>
+
                                     <div class="form-group col-md-6 mb-3">
                                         <label for="exampleFormControlSelect1" class="form-label">Status</label>
                                         <select class="form-select" id="exampleFormControlSelect1" name="status">
@@ -57,6 +57,13 @@
                                             <option value="inactive">Inactive</option>
                                         </select>
                                     </div>
+
+                                    <div class="col-lg-12 mb-3">
+                                        <label for="description" class="form-label">Description <span style="color: red">*</span></label>
+                                        <textarea class="form-control" name="description"  id="tinymceExample" rows="6"></textarea>
+                                    </div>
+
+
                                 </div>
 
                                 <button type="submit" class="btn btn-primary waves-effect waves-light">Save

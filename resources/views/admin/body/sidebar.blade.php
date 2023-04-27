@@ -114,10 +114,10 @@ $status = $userid->status;
                     <div class="collapse" id="sidebarpermission">
                         <ul class="nav-second-level">
                             <li>
-                                <a href="{{ route('all.permission') }}">Leave Type</a>
+                                <a href="{{ route('all.leave_type') }}">Leave Type</a>
                             </li>
                             <li>
-                                <a href="{{ route('all.roles') }}">Leave Request</a>
+                                <a href="#">Leave Request</a>
                             </li>
                         </ul>
                     </div>
@@ -139,7 +139,7 @@ $status = $userid->status;
                     </a>
                 </li>
                 <li>
-                    <a href="#">
+                    <a href="{{ route('all.holiday') }}">
                         <i class="mdi mdi-calendar-remove"></i>
                         <span> Holiday </span>
                     </a>
@@ -151,7 +151,7 @@ $status = $userid->status;
                     </a>
                 </li>
                 <li>
-                    <a href="#">
+                    <a href="{{ route('all.content') }}">
                         <i class="mdi mdi-content-paste"></i>
                         <span> Content management </span>
                     </a>

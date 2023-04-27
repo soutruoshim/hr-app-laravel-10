@@ -14,10 +14,10 @@
                         <div class="page-title-right">
                             <ol class="breadcrumb m-0">
 
-                                <li class="breadcrumb-item active">Edit Branch</li>
+                                <li class="breadcrumb-item active">Edit Department</li>
                             </ol>
                         </div>
-                        <h4 class="page-title">Edit Branch</h4>
+                        <h4 class="page-title">Edit Department</h4>
                     </div>
                 </div>
             </div>

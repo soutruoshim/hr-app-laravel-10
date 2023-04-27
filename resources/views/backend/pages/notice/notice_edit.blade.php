@@ -29,45 +29,24 @@
                     <div class="card">
                         <div class="card-body">
 
-                            <form id="myForm" method="post" action="{{ route('meeting.update', $meeting->id) }}">
+                            <form id="myForm" method="post" action="{{ route('notice.update', $notice->id) }}">
                                 @csrf
 
-                                <input type="hidden" name="id" value="{{ $meeting->id }}">
+                                <input type="hidden" name="id" value="{{ $notice->id }}">
 
                                 <div class="row">
                                     <div class="col-lg-6 mb-3">
-                                        <label for="title" class="form-label"> Meeting title <span
+                                        <label for="title" class="form-label"> Notice title<span
                                                 style="color: red">*</span></label>
                                         <input type="text" class="form-control" id="title" name="title" required
-                                            autocomplete="off" placeholder="Enter Content Title" value="{{$meeting->title}}">
+                                        value="{{$notice->title}}" autocomplete="off" placeholder="Enter Content Title">
                                     </div>
-
                                     <div class="col-lg-6 mb-3">
-                                        <label for="date" class="form-label"> Meeting Date <span
+                                        <label for="description" class="form-label">Notice Description <span
                                                 style="color: red">*</span></label>
-                                        <input type="date" class="form-control" id="date" name="date"
-                                            required value="{{$meeting->date}}" autocomplete="off">
+                                        <textarea class="form-control" minlength="10" name="description" id="description" rows="6">{{$notice->description}} </textarea>
                                     </div>
 
-                                    <div class="col-lg-6 mb-3">
-                                        <label for="start_time" class="form-label"> Meeting Start Time <span
-                                                style="color: red">*</span> </label>
-                                        <input type="time" class="form-control" id="start_time"
-                                            name="start_time" required value="{{$meeting->start_time}}" autocomplete="off">
-                                    </div>
-
-                                    <div class="col-lg-6 mb-3">
-                                        <label for="venue" class="form-label"> Meeting Venue <span
-                                                style="color: red">*</span> </label>
-                                        <input type="text" class="form-control" id="venue" name="venue" required
-                                         value="{{$meeting->venue}}" autocomplete="off" placeholder="Enter venue">
-                                    </div>
-
-                                    <div class="col-lg-6 mb-3">
-                                        <label for="description" class="form-label">Meeting Description <span
-                                                style="color: red">*</span></label>
-                                        <textarea class="form-control" minlength="10" name="description" id="description" rows="6">{{$meeting->description}} </textarea>
-                                    </div>
 
                                     <div class="col-lg-12 mb-3">
                                         <label for="employee" class="form-label">Meeting participator <span
@@ -82,15 +61,13 @@
 
                                         </select>
                                     </div>
-
-                                    <div class="col-lg-12 mb-3">
-                                        <label for="image" class="form-label">Upload Image</label>
-                                        <input class="form-control" type="file"
-                                            accept="image/png, image/jpeg,image/jpg, image/svg," id="image"
-                                            name="image" />
-                                        <small>*Image is recommended to be in landscape form</small><br>
-                                        <img src="@if(!empty($meeting->image)) {{ asset($meeting->image) }} @else  https://digitalhr.cyclonenepal.com/uploads/company/logo/Thumb-643e5a9c1197a_m2.png @endif"
-                                        alt="" style="object-fit: contain" class="mt-3" width="150">
+                                    <div class="form-group col-md-6 mb-3">
+                                        <label for="exampleFormControlSelect1" class="form-label">Status</label>
+                                        <select class="form-select" id="exampleFormControlSelect1" name="status">
+                                            <option value="" disabled>Select status</option>
+                                            <option value="active" @if($notice->status=='active') selected @endif>Active</option>
+                                            <option value="inactive" @if($notice->status=='active') selected @endif>Inactive</option>
+                                        </select>
                                     </div>
                                 </div>
                                 <button type="submit" class="btn btn-primary waves-effect waves-light">Save

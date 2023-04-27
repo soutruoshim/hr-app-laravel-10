@@ -14,10 +14,10 @@
                         <div class="page-title-right">
                             <ol class="breadcrumb m-0">
 
-                                <li class="breadcrumb-item active">Add Position</li>
+                                <li class="breadcrumb-item active">Edit Leave Type</li>
                             </ol>
                         </div>
-                        <h4 class="page-title">Add Position</h4>
+                        <h4 class="page-title">Edit Leave Type</h4>
                     </div>
                 </div>
             </div>
@@ -29,39 +29,44 @@
                     <div class="card">
                         <div class="card-body">
 
-                            <form id="myForm" method="post" action="{{ route('position.store') }}">
+                            <form id="myForm" method="post" action="{{ route('leave_type.update', $leave_type->id) }}">
                                 @csrf
+
+                                <input type="hidden" name="id" value="{{ $leave_type->id }}">
 
                                 <div class="row">
 
-                                    <div class="form-group col-md-6 mb-3">
-                                        <label for="department_id" class="form-label">Department Name </label>
-                                        <select name="department_id" class="form-select" id="department_id">
-                                            <option>Select Department </option>
-                                            @foreach ($departments as $department)
-                                                <option value="{{ $department->id }}" >{{ $department->department_name }}</option>
-                                            @endforeach
+                                    <div class="col-lg-6 mb-3">
+                                        <label for="name" class="form-label"> Leave Type Name <span style="color: red">*</span></label>
+                                        <input type="text" class="form-control" id="leave_type_name" name="leave_type_name" required autocomplete="off" placeholder="Enter Leave Type" value="{{ $leave_type->leave_type_name }}">
+                                    </div>
+
+                                    <div class="col-lg-6 mb-3">
+                                        <label for="exampleFormControlSelect1" class="form-label">Is Paid Leave <span style="color: red">*</span></label>
+                                        <select class="form-select" id="paid_leave" required name="paid_leave">
+                                            <option value="" selected disabled></option>
+                                            <option value="1" @if($leave_type->paid_leave=='1') selected @endif>Yes</option>
+                                            <option value="0" @if($leave_type->paid_leave=='0') selected @endif>No</option>
                                         </select>
                                     </div>
 
-                                    <div class="form-group col-md-6 mb-3">
-                                        <label for="position_name" class="form-label">Position Name </label>
-                                        <input type="text" name="position_name" class="form-control"
-                                            id="position_name" placeholder="Position Name">
+                                    <div class="col-lg-6 mb-3 leaveAllocated " >
+                                        <label for="leave_allocated" class="form-label">Leave Allocated Days <span style="color: red">*</span></label>
+                                        <input type="number" min="1" class="form-control" id="leave_allocated"  name="leave_allocated" value="{{ $leave_type->leave_allocated }}" autocomplete="off" placeholder="">
                                     </div>
+
                                     <div class="form-group col-md-6 mb-3">
                                         <label for="exampleFormControlSelect1" class="form-label">Status</label>
                                         <select class="form-select" id="exampleFormControlSelect1" name="status">
                                             <option value="" disabled>Select status</option>
-                                            <option value="active">Active</option>
-                                            <option value="inactive">Inactive</option>
+                                            <option value="active" @if($leave_type->status=='active') selected @endif>Active</option>
+                                            <option value="inactive" @if($leave_type->status=='inactive') selected @endif>Inactive</option>
                                         </select>
                                     </div>
-                                </div>
 
+                                </div>
                                 <button type="submit" class="btn btn-primary waves-effect waves-light">Save
                                     Changes</button>
-
                             </form>
 
                         </div> <!-- end card-body -->
@@ -80,32 +85,14 @@
         $(document).ready(function() {
             $('#myForm').validate({
                 rules: {
-                    department_name: {
+                    category_name: {
                         required: true,
                     },
-                    department_head: {
-                        required: true,
-                    },
-                    address: {
-                        required: true,
-                    },
-                    phone: {
-                        required: true,
-                    }
                 },
                 messages: {
-                    department_name: {
-                        required: 'Please Enter Branch Name',
+                    category_name: {
+                        required: 'Please Enter Category Name',
                     },
-                    department_head: {
-                        required: 'Please Enter Branch Name',
-                    },
-                    address: {
-                        required: 'Please Enter Branch Name',
-                    },
-                    phone: {
-                        required: 'Please Enter Branch Name',
-                    }
                 },
                 errorElement: 'span',
                 errorPlacement: function(error, element) {

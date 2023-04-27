@@ -14,6 +14,9 @@ use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\ShiftTimeController;
 use App\Http\Controllers\MeetingController;
 use App\Http\Controllers\NoticeController;
+use App\Http\Controllers\LeaveTypeController;
+use App\Http\Controllers\ContentController;
+use App\Http\Controllers\HolidayController;
 use App\Http\Middleware\RedirectIfAuthenticated;
 use App\Http\Middleware\Role;
 
@@ -161,6 +164,35 @@ Route::middleware(['auth','role:admin'])->group(function() {
         Route::get('/delete/notice/{id}','destroy')->name('delete.notice');
       });
 
+       // Leave type
+       Route::controller(LeaveTypeController::class)->group(function(){
+            Route::get('/all/leave_type','index')->name('all.leave_type');
+            Route::get('/add/leave_type','create')->name('add.leave_type');
+            Route::post('/store/leave_type','store')->name('leave_type.store');
+            Route::get('/edit/leave_type/{id}','edit')->name('edit.leave_type');
+            Route::post('/update/leave_type/{id}','update')->name('leave_type.update');
+            Route::get('/delete/leave_type/{id}','destroy')->name('delete.leave_type');
+       });
+
+       // Holiday
+       Route::controller(HolidayController::class)->group(function(){
+        Route::get('/all/holiday','index')->name('all.holiday');
+        Route::get('/add/holiday','create')->name('add.holiday');
+        Route::post('/store/holiday','store')->name('holiday.store');
+        Route::get('/edit/holiday/{id}','edit')->name('edit.holiday');
+        Route::post('/update/holiday/{id}','update')->name('holiday.update');
+        Route::get('/delete/holiday/{id}','destroy')->name('delete.holiday');
+      });
+
+      // Content
+      Route::controller(ContentController::class)->group(function(){
+        Route::get('/all/content','index')->name('all.content');
+        Route::get('/add/content','create')->name('add.content');
+        Route::post('/store/content','store')->name('content.store');
+        Route::get('/edit/content/{id}','edit')->name('edit.content');
+        Route::post('/update/content/{id}','update')->name('content.update');
+        Route::get('/delete/content/{id}','destroy')->name('delete.content');
+      });
 });
 
 

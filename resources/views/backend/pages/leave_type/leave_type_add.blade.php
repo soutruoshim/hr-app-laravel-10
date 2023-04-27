@@ -14,10 +14,10 @@
                         <div class="page-title-right">
                             <ol class="breadcrumb m-0">
 
-                                <li class="breadcrumb-item active">Add Position</li>
+                                <li class="breadcrumb-item active">Add Leave Type</li>
                             </ol>
                         </div>
-                        <h4 class="page-title">Add Position</h4>
+                        <h4 class="page-title">Add Leave Type</h4>
                     </div>
                 </div>
             </div>
@@ -29,26 +29,29 @@
                     <div class="card">
                         <div class="card-body">
 
-                            <form id="myForm" method="post" action="{{ route('position.store') }}">
+                            <form id="myForm" method="post" action="{{ route('leave_type.store') }}">
                                 @csrf
 
                                 <div class="row">
+                                    <div class="col-lg-6 mb-3">
+                                        <label for="name" class="form-label"> Leave Type Name <span style="color: red">*</span></label>
+                                        <input type="text" class="form-control" id="leave_type_name" name="leave_type_name" required autocomplete="off" placeholder="Enter Leave Type">
+                                    </div>
 
-                                    <div class="form-group col-md-6 mb-3">
-                                        <label for="department_id" class="form-label">Department Name </label>
-                                        <select name="department_id" class="form-select" id="department_id">
-                                            <option>Select Department </option>
-                                            @foreach ($departments as $department)
-                                                <option value="{{ $department->id }}" >{{ $department->department_name }}</option>
-                                            @endforeach
+                                    <div class="col-lg-6 mb-3">
+                                        <label for="exampleFormControlSelect1" class="form-label">Is Paid Leave <span style="color: red">*</span></label>
+                                        <select class="form-select" id="paid_leave" required name="paid_leave">
+                                            <option value="" selected disabled></option>
+                                            <option value="1">Yes</option>
+                                            <option value="0">No</option>
                                         </select>
                                     </div>
 
-                                    <div class="form-group col-md-6 mb-3">
-                                        <label for="position_name" class="form-label">Position Name </label>
-                                        <input type="text" name="position_name" class="form-control"
-                                            id="position_name" placeholder="Position Name">
+                                    <div class="col-lg-6 mb-3 leaveAllocated " >
+                                        <label for="leave_allocated" class="form-label">Leave Allocated Days <span style="color: red">*</span></label>
+                                        <input type="number" min="1" class="form-control" id="leave_allocated"  name="leave_allocated" value="" autocomplete="off" placeholder="">
                                     </div>
+
                                     <div class="form-group col-md-6 mb-3">
                                         <label for="exampleFormControlSelect1" class="form-label">Status</label>
                                         <select class="form-select" id="exampleFormControlSelect1" name="status">
@@ -57,6 +60,7 @@
                                             <option value="inactive">Inactive</option>
                                         </select>
                                     </div>
+
                                 </div>
 
                                 <button type="submit" class="btn btn-primary waves-effect waves-light">Save

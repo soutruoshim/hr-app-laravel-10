@@ -14,10 +14,10 @@
                         <div class="page-title-right">
                             <ol class="breadcrumb m-0">
 
-                                <li class="breadcrumb-item active">Add Position</li>
+                                <li class="breadcrumb-item active">Add Holiday</li>
                             </ol>
                         </div>
-                        <h4 class="page-title">Add Position</h4>
+                        <h4 class="page-title">Add Holiday</h4>
                     </div>
                 </div>
             </div>
@@ -29,33 +29,34 @@
                     <div class="card">
                         <div class="card-body">
 
-                            <form id="myForm" method="post" action="{{ route('position.store') }}">
+                            <form id="myForm" method="post" action="{{ route('holiday.store') }}">
                                 @csrf
 
                                 <div class="row">
 
-                                    <div class="form-group col-md-6 mb-3">
-                                        <label for="department_id" class="form-label">Department Name </label>
-                                        <select name="department_id" class="form-select" id="department_id">
-                                            <option>Select Department </option>
-                                            @foreach ($departments as $department)
-                                                <option value="{{ $department->id }}" >{{ $department->department_name }}</option>
-                                            @endforeach
+                                    <div class="col-lg-6 mb-3">
+                                        <label for="event" class="form-label">Event<span style="color: red">*</span></label>
+                                        <input type="text" class="form-control" id="event_name" required name="event_name" value="" autocomplete="off" placeholder="">
+                                    </div>
+
+                                    <div class="col-lg-6 mb-3">
+                                        <label for="event_date" class="form-label"> Event Date<span style="color: red">*</span></label>
+                                        <input type="date" class="form-control" id="event_date" required name="event_date" value="" autocomplete="off" placeholder="">
+                                    </div>
+
+
+                                    <div class="col-lg-6 mb-3">
+                                        <label for="exampleFormControlSelect1" class="form-label">Status</label>
+                                        <select class="form-select" id="exampleFormControlSelect1" name="status">
+                                            <option value="" selected  disabled>Select status</option>
+                                            <option value="active" >Active</option>
+                                            <option value="inactive" >Inactive</option>
                                         </select>
                                     </div>
 
-                                    <div class="form-group col-md-6 mb-3">
-                                        <label for="position_name" class="form-label">Position Name </label>
-                                        <input type="text" name="position_name" class="form-control"
-                                            id="position_name" placeholder="Position Name">
-                                    </div>
-                                    <div class="form-group col-md-6 mb-3">
-                                        <label for="exampleFormControlSelect1" class="form-label">Status</label>
-                                        <select class="form-select" id="exampleFormControlSelect1" name="status">
-                                            <option value="" disabled>Select status</option>
-                                            <option value="active">Active</option>
-                                            <option value="inactive">Inactive</option>
-                                        </select>
+                                    <div class="col-lg-6 mb-3">
+                                        <label for="note" class="form-label">Description</label>
+                                        <textarea class="form-control" name="description" id="tinymceExample" rows="10"></textarea>
                                     </div>
                                 </div>
 

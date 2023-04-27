@@ -70,6 +70,18 @@ class NoticeController extends Controller
     public function edit(string $id)
     {
         //
+        $notice = Notice::findOrFail($id);
+        $employees = Employee::latest()->get();
+
+        $emp_selected = [];
+
+        foreach($notice->notice_employee as $emp){
+           $emp_selected[] = $emp->employee_id;
+        }
+
+
+        return view('backend.pages.notice.notice_edit',compact('notice', 'employees', 'emp_selected'));
+
     }
 
     /**
@@ -77,7 +89,32 @@ class NoticeController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+            $id = $request->id;
+            $notice = Notice::findOrFail($id);
+
+            NoticeEmployee::where('notice_id', $notice->id)->delete();
+
+            $notice->update([
+                'title' => $request->title,
+                'status' => $request->status,
+                'description' => $request->description
+            ]);
+
+            if(!empty($_POST['employees'])) {
+                foreach($_POST['employees'] as $selected){
+                    NoticeEmployee::insert([
+                        'notice_id' => $notice->id,
+                        'employee_id' => $selected
+                    ]);
+                }
+            }
+
+            $notification = array(
+                'message' => 'Notice Updated Successfully',
+                'alert-type' => 'success'
+            );
+
+            return redirect()->route('all.notice')->with($notification);
     }
 
     /**
@@ -85,6 +122,19 @@ class NoticeController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $notice = Notice::findOrFail($id);
+
+        NoticeEmployee::where('notice_id', $notice->id)->delete();
+
+
+        $notice->delete();
+
+        $notification = array(
+           'message' => 'Notice Deleted Successfully',
+           'alert-type' => 'success'
+
+       );
+
+       return redirect()->back()->with($notification);
     }
 }
