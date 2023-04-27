@@ -17,6 +17,7 @@ use App\Http\Controllers\NoticeController;
 use App\Http\Controllers\LeaveTypeController;
 use App\Http\Controllers\ContentController;
 use App\Http\Controllers\HolidayController;
+use App\Http\Controllers\NotificationController;
 use App\Http\Middleware\RedirectIfAuthenticated;
 use App\Http\Middleware\Role;
 
@@ -193,6 +194,16 @@ Route::middleware(['auth','role:admin'])->group(function() {
         Route::post('/update/content/{id}','update')->name('content.update');
         Route::get('/delete/content/{id}','destroy')->name('delete.content');
       });
+
+    // Notification
+    Route::controller(NotificationController::class)->group(function(){
+    Route::get('/all/notify','index')->name('all.notify');
+    Route::get('/add/notify','create')->name('add.notify');
+    Route::post('/store/notify','store')->name('notify.store');
+    Route::get('/edit/notify/{id}','edit')->name('edit.notify');
+    Route::post('/update/notify/{id}','update')->name('notify.update');
+    Route::get('/delete/notify/{id}','destroy')->name('delete.notify');
+    });
 });
 
 

@@ -212,13 +212,13 @@ $status = $userid->status;
                         </ul>
                     </div>
                 </li>
-
-
-
-
                 @endif
-
-
+                <li>
+                    <a href="{{ route('all.notify') }}">
+                        <i class="mdi mdi-message-alert"></i>
+                        <span> Notification </span>
+                    </a>
+                </li>
             </ul>
 
         </div>
