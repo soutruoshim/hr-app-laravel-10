@@ -18,6 +18,7 @@ use App\Http\Controllers\LeaveTypeController;
 use App\Http\Controllers\ContentController;
 use App\Http\Controllers\HolidayController;
 use App\Http\Controllers\NotificationController;
+use App\Http\Controllers\AttendanceController;
 use App\Http\Middleware\RedirectIfAuthenticated;
 use App\Http\Middleware\Role;
 
@@ -167,12 +168,12 @@ Route::middleware(['auth','role:admin'])->group(function() {
 
        // Leave type
        Route::controller(LeaveTypeController::class)->group(function(){
-            Route::get('/all/leave_type','index')->name('all.leave_type');
-            Route::get('/add/leave_type','create')->name('add.leave_type');
-            Route::post('/store/leave_type','store')->name('leave_type.store');
-            Route::get('/edit/leave_type/{id}','edit')->name('edit.leave_type');
-            Route::post('/update/leave_type/{id}','update')->name('leave_type.update');
-            Route::get('/delete/leave_type/{id}','destroy')->name('delete.leave_type');
+        Route::get('/all/leave_type','index')->name('all.leave_type');
+        Route::get('/add/leave_type','create')->name('add.leave_type');
+        Route::post('/store/leave_type','store')->name('leave_type.store');
+        Route::get('/edit/leave_type/{id}','edit')->name('edit.leave_type');
+        Route::post('/update/leave_type/{id}','update')->name('leave_type.update');
+        Route::get('/delete/leave_type/{id}','destroy')->name('delete.leave_type');
        });
 
        // Holiday
@@ -195,15 +196,20 @@ Route::middleware(['auth','role:admin'])->group(function() {
         Route::get('/delete/content/{id}','destroy')->name('delete.content');
       });
 
-    // Notification
-    Route::controller(NotificationController::class)->group(function(){
-    Route::get('/all/notify','index')->name('all.notify');
-    Route::get('/add/notify','create')->name('add.notify');
-    Route::post('/store/notify','store')->name('notify.store');
-    Route::get('/edit/notify/{id}','edit')->name('edit.notify');
-    Route::post('/update/notify/{id}','update')->name('notify.update');
-    Route::get('/delete/notify/{id}','destroy')->name('delete.notify');
-    });
+        // Notification
+        Route::controller(NotificationController::class)->group(function(){
+            Route::get('/all/notify','index')->name('all.notify');
+            Route::get('/add/notify','create')->name('add.notify');
+            Route::post('/store/notify','store')->name('notify.store');
+            Route::get('/edit/notify/{id}','edit')->name('edit.notify');
+            Route::post('/update/notify/{id}','update')->name('notify.update');
+            Route::get('/delete/notify/{id}','destroy')->name('delete.notify');
+        });
+        // Notification
+        Route::controller(AttendanceController::class)->group(function(){
+            Route::get('/all/attendance','index')->name('all.attendance');
+            Route::get('/show/attendance/{id}','show')->name('show.attendance');
+        });
 });
 
 
