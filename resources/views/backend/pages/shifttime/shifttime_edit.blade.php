@@ -14,7 +14,7 @@
                         <div class="page-title-right">
                             <ol class="breadcrumb m-0">
 
-                                <li class="breadcrumb-item active">Edit Branch</li>
+                                <li class="breadcrumb-item active">Edit Shift Time</li>
                             </ol>
                         </div>
                         <h4 class="page-title">Edit Branch</h4>
