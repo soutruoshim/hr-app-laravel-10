@@ -12,7 +12,7 @@
                     <div class="page-title-box">
                         <div class="page-title-right">
                             <ol class="breadcrumb m-0">
-                                <a href="{{ route('add.position') }}" class="btn btn-blue waves-effect waves-light">Add Attendance</a>
+                                {{-- <a href="{{ route('add.position') }}" class="btn btn-blue waves-effect waves-light">Add Attendance</a> --}}
                             </ol>
                         </div>
                         <h4 class="page-title">All Attendance </h4>
@@ -88,9 +88,10 @@
                                                         data-href="https://digitalhr.cyclonenepal.com/admin/attendances/325"
                                                         data-in="{{ $item->check_in }}"
                                                         data-out="{{ $item->check_out }}"
-                                                        data-remark=""
-                                                        data-date="{{$item->date}}"
-                                                        data-name="Admin"
+                                                        data-remark="{{$item->remark}}"
+                                                        data-emp_id = "{{$item->id}}"
+                                                        data-date="{{isset($_GET['attendance_date'])?$_GET['attendance_date']:date('Y-m-d')}}"
+                                                        data-name={{$item->user->name}}
                                                         title="Edit attendance time">
                                                          {{-- <i class="link-icon" data-feather="edit"></i> --}}
                                                         Edit
@@ -129,10 +130,14 @@
                         </div>
                         <div class="modal-body">
                             <div class="container">
-                                <form class="forms-sample" id="editAttendance" action=""  method="post" >
-                                    <input type="hidden" name="_token" value="m8YAfoJn6818z3Dk8xvP5pW5msQERFkdpkz1ZTAL">
-                                    <input type="hidden" name="_method" value="put">
+
+                               <form class="forms-sample" id="editAttendance" method="post" action="{{ route('attendance.store') }}">
+                                        @csrf
                                     <div class="row">
+
+                                        <input type="hidden" id="emp_id" name="emp_id" value="" />
+                                        <input type="hidden" id="date" name="date" value="" />
+
                                         <label for="exampleFormControlSelect1" class="form-label">Check In At</label>
 
                                         <div class="col-lg-12 mb-3">
@@ -189,12 +194,16 @@
                 let editRemark = $(this).data('remark');
                 let date = $(this).data('date');
                 let name = $(this).data('name');
+                let emp_id = $(this).data('emp_id');
+
 
                 $('.modal-title').html('Edit Attendance('+name+') Time of '+date);
-                $('#editAttendance').attr('action',url)
+                //$('#editAttendance').attr('action',url)
+                $('#emp_id').val(emp_id)
+                $('#date').val(date)
                 $('#check_in').val(attendanceIn)
                 $('#check_out').val(attendanceOut)
-                $('#remark').val(editRemark)
+                $('#edit_remark').val(editRemark)
                 $('#attendanceForm').modal('show');
             });
 

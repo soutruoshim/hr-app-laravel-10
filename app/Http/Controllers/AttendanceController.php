@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Attendance;
 use App\Models\Employee;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+
 
 class AttendanceController extends Controller
 {
@@ -37,7 +39,42 @@ class AttendanceController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
+        $emp_id = $request->emp_id;
+        $date = $request->date;
+
+        $attendance = Attendance::where('date', '=', $date)
+        ->where('employee_id', '=', $emp_id)->get()->first();
+
+        //dd($attendance);
+
+        if($attendance){
+            $attendance->update([
+                'check_in' => $request->check_in_at,
+                'check_out' => $request->check_out_at,
+                'employee_id' => $request->emp_id,
+                'date' => $request->date,
+                'attendance_by' => Auth::id(),
+                'remark' => $request->edit_remark
+            ]);
+        }else{
+            //dd($request->all());
+            Attendance::insert([
+                'check_in' => $request->check_in_at,
+                'check_out' => $request->check_out_at,
+                'date' => $request->date,
+                'employee_id' => $request->emp_id,
+                'attendance_by' => Auth::id(),
+                'remark' => $request->edit_remark
+            ]);
+        }
+
+        $notification = array(
+            'message' => 'Attendance Updated Successfully',
+            'alert-type' => 'success'
+        );
+
+        return redirect()->back()->with($notification);
     }
 
     /**

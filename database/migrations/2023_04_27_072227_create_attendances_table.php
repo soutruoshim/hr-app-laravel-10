@@ -22,6 +22,7 @@ return new class extends Migration
             $table->string('check_out_long')->nullable();
             $table->integer('employee_id');
             $table->integer('attendance_by');
+            $table->text('remark');
             $table->enum('status',['pending','approved'])->default('pending');
             $table->timestamps();
         });
