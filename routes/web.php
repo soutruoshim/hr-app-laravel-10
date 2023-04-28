@@ -208,7 +208,9 @@ Route::middleware(['auth','role:admin'])->group(function() {
         // Notification
         Route::controller(AttendanceController::class)->group(function(){
             Route::get('/all/attendance','index')->name('all.attendance');
-            Route::get('/show/attendance/{id}','show')->name('show.attendance');
+            Route::get('/show/attendance/{id}/{date}','show')->name('show.attendance');
+
+            Route::get('/attendance/ajax', 'getAttendanceByMonth');
         });
 });
 

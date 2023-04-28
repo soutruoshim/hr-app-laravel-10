@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Attendance;
 use App\Models\Employee;
 use Illuminate\Http\Request;
 
@@ -19,7 +20,7 @@ class AttendanceController extends Controller
                          $join->on('employees.id', '=', 'attendances.employee_id')
                               ->where('date','=', $param);
                      })
-                     ->get();
+                     ->get(['Employees.*', 'attendances.date', 'attendances.check_in','attendances.check_out','attendances.attendance_by','attendances.check_out','attendances.status']);
         return view('backend.pages.attendance.index',compact('employees'));
     }
 
@@ -42,9 +43,10 @@ class AttendanceController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(string $id, string $date)
     {
-
+        $employee = Employee::findOrFail($id);
+        return view('backend.pages.attendance.show', compact('employee', 'date'));
     }
 
     /**
@@ -69,5 +71,13 @@ class AttendanceController extends Controller
     public function destroy(string $id)
     {
         //
+    }
+
+    public function getAttendanceByMonth(){
+        $attendances = Attendance::whereMonth('date',$_GET['month'])
+                                    ->whereYear('date',$_GET['year'])
+                                    ->Where('employee_id', $_GET['emp_id'])
+                                    ->get();
+        return json_encode($attendances);
     }
 }

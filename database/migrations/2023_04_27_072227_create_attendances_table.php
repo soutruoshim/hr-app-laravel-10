@@ -15,7 +15,11 @@ return new class extends Migration
             $table->id();
             $table->date('date')->nullable();
             $table->time('check_in')->nullable();
+            $table->string('check_in_late')->nullable();
+            $table->string('check_in_long')->nullable();
             $table->time('check_out')->nullable();
+            $table->string('check_out_late')->nullable();
+            $table->string('check_out_long')->nullable();
             $table->integer('employee_id');
             $table->integer('attendance_by');
             $table->enum('status',['pending','approved'])->default('pending');

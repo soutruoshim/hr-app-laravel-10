@@ -49,8 +49,10 @@
                                 <tbody>
                                     @foreach ($employees as $key => $item)
                                         <tr>
+
+                                            {{-- <a href="{{ route('show.attendance', $item->id) }}"> --}}
                                             <td>{{ $key + 1 }}</td>
-                                            <td><a href="{{ route('position.store', $item->id) }}">{{ $item->user->name}}</a></td>
+                                            <td><a href="{{ route('show.attendance', [$item->id, isset($_GET['attendance_date'])?$_GET['attendance_date']:date("Y-m-d")] )}}">{{ $item->user->name}}<a/></td>
                                             <td>{{ $item->check_in }} </td>
                                             <td>{{ $item->check_out }}</td>
                                             <td>{{ $item->status }}</td>

@@ -126,7 +126,7 @@ $status = $userid->status;
 
 
                 <li>
-                    <a href="#">
+                    <a href="{{route('all.attendance')}}">
                         <i class="mdi mdi-calendar-multiple-check"></i>
                         <span> Attendance </span>
                     </a>
