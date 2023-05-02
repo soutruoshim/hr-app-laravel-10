@@ -53,12 +53,12 @@
                                         <div class="row">
                                             <div class="col-6">
                                                 <div class="avatar-lg rounded-circle bg-primary border-primary border shadow">
-                                                    <i class="fe-heart font-22 avatar-title text-white"></i>
+                                                    <i class="fe-users font-22 avatar-title text-white"></i>
                                                 </div>
                                             </div>
                                             <div class="col-6">
                                                 <div class="text-end">
-                                                    <h3 class="text-dark mt-1">$<span data-plugin="counterup">58,94</span></h3>
+                                                    <h3 class="text-dark mt-1"><span data-plugin="counterup">{{$employees}}</span></h3>
                                                     <p class="text-muted mb-1 text-truncate">Total Employees</p>
                                                 </div>
                                             </div>
@@ -73,12 +73,12 @@
                                         <div class="row">
                                             <div class="col-6">
                                                 <div class="avatar-lg rounded-circle bg-success border-success border shadow">
-                                                    <i class="fe-shopping-cart font-22 avatar-title text-white"></i>
+                                                    <i class="fe-calendar font-22 avatar-title text-white"></i>
                                                 </div>
                                             </div>
                                             <div class="col-6">
                                                 <div class="text-end">
-                                                    <h3 class="text-dark mt-1"><span data-plugin="counterup">127</span></h3>
+                                                    <h3 class="text-dark mt-1"><span data-plugin="counterup">{{$paidLeave}}</span></h3>
                                                     <p class="text-muted mb-1 text-truncate">PAID LEAVES</p>
                                                 </div>
                                             </div>
@@ -98,7 +98,7 @@
                                             </div>
                                             <div class="col-6">
                                                 <div class="text-end">
-                                                    <h3 class="text-dark mt-1"><span data-plugin="counterup">0.58</span>%</h3>
+                                                    <h3 class="text-dark mt-1"><span data-plugin="counterup">{{$holidays}}</span></h3>
                                                     <p class="text-muted mb-1 text-truncate">TOTAL HOLIDAYS</p>
                                                 </div>
                                             </div>
@@ -133,7 +133,7 @@
                                         <div class="row">
                                             <div class="col-6">
                                                 <div class="avatar-lg rounded-circle bg-primary border-primary border shadow">
-                                                    <i class="fe-heart font-22 avatar-title text-white"></i>
+                                                    <i class="fe-file font-22 avatar-title text-white"></i>
                                                 </div>
                                             </div>
                                             <div class="col-6">
@@ -153,7 +153,7 @@
                                         <div class="row">
                                             <div class="col-6">
                                                 <div class="avatar-lg rounded-circle bg-success border-success border shadow">
-                                                    <i class="fe-shopping-cart font-22 avatar-title text-white"></i>
+                                                    <i class="fe-book-open font-22 avatar-title text-white"></i>
                                                 </div>
                                             </div>
                                             <div class="col-6">
@@ -193,7 +193,7 @@
                                         <div class="row">
                                             <div class="col-6">
                                                 <div class="avatar-lg rounded-circle bg-warning border-warning border shadow">
-                                                    <i class="fe-eye font-22 avatar-title text-white"></i>
+                                                    <i class="fe-power font-22 avatar-title text-white"></i>
                                                 </div>
                                             </div>
                                             <div class="col-6">

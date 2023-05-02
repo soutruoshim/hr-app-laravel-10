@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Employee;
+use App\Models\Holiday;
+use App\Models\LeaveType;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -16,7 +19,12 @@ class AdminController extends Controller
 
     } // End Method
     public function AdminDashboard(){
-        return view('admin.index');
+        $employees = Employee::count();
+        $paidLeave = LeaveType::where("paid_leave", "=", "1")->count();
+        $unpaidLeave = LeaveType::where("paid_leave", "=", "0")->count();
+        $holidays = Holiday::count();
+
+        return view('admin.index', compact("employees", "paidLeave", "unpaidLeave", "holidays"));
     }
 
     public function AdminLogin(){
