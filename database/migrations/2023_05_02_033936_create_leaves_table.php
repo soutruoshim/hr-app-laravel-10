@@ -21,7 +21,7 @@ return new class extends Migration
             $table->integer('request_by');
             $table->integer('approve_by');
             $table->text('reason');
-            $table->enum('status',['pending','approved'])->default('pending');
+            $table->enum('status',['pending','approved', 'rejected'])->default('pending');
             $table->timestamps();
         });
     }
