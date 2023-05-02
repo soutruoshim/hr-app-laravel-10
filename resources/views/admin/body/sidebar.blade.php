@@ -117,7 +117,7 @@ $status = $userid->status;
                                 <a href="{{ route('all.leave_type') }}">Leave Type</a>
                             </li>
                             <li>
-                                <a href="#">Leave Request</a>
+                                <a href="{{ route('all.leave')}}">Leave Request</a>
                             </li>
                         </ul>
                     </div>

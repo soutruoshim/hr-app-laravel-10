@@ -19,6 +19,7 @@ use App\Http\Controllers\ContentController;
 use App\Http\Controllers\HolidayController;
 use App\Http\Controllers\NotificationController;
 use App\Http\Controllers\AttendanceController;
+use App\Http\Controllers\LeaveController;
 use App\Http\Middleware\RedirectIfAuthenticated;
 use App\Http\Middleware\Role;
 
@@ -196,22 +197,32 @@ Route::middleware(['auth','role:admin'])->group(function() {
         Route::get('/delete/content/{id}','destroy')->name('delete.content');
       });
 
-        // Notification
-        Route::controller(NotificationController::class)->group(function(){
-            Route::get('/all/notify','index')->name('all.notify');
-            Route::get('/add/notify','create')->name('add.notify');
-            Route::post('/store/notify','store')->name('notify.store');
-            Route::get('/edit/notify/{id}','edit')->name('edit.notify');
-            Route::post('/update/notify/{id}','update')->name('notify.update');
-            Route::get('/delete/notify/{id}','destroy')->name('delete.notify');
-        });
-        // Notification
-        Route::controller(AttendanceController::class)->group(function(){
-            Route::get('/all/attendance','index')->name('all.attendance');
-            Route::get('/show/attendance/{id}/{date}','show')->name('show.attendance');
-            Route::post('/store/attendance','store')->name('attendance.store');
-            Route::get('/attendance/ajax', 'getAttendanceByMonth');
-        });
+    // Notification
+    Route::controller(NotificationController::class)->group(function(){
+        Route::get('/all/notify','index')->name('all.notify');
+        Route::get('/add/notify','create')->name('add.notify');
+        Route::post('/store/notify','store')->name('notify.store');
+        Route::get('/edit/notify/{id}','edit')->name('edit.notify');
+        Route::post('/update/notify/{id}','update')->name('notify.update');
+        Route::get('/delete/notify/{id}','destroy')->name('delete.notify');
+    });
+    // Notification
+    Route::controller(AttendanceController::class)->group(function(){
+        Route::get('/all/attendance','index')->name('all.attendance');
+        Route::get('/show/attendance/{id}/{date}','show')->name('show.attendance');
+        Route::post('/store/attendance','store')->name('attendance.store');
+        Route::get('/attendance/ajax', 'getAttendanceByMonth');
+    });
+
+     // Leave
+     Route::controller(LeaveController::class)->group(function(){
+        Route::get('/all/leave','index')->name('all.leave');
+        Route::get('/add/leave','create')->name('add.leave');
+        Route::post('/store/leave','store')->name('leave.store');
+        Route::get('/edit/leave/{id}','edit')->name('edit.leave');
+        Route::post('/update/leave/{id}','update')->name('leave.update');
+        Route::get('/delete/leave/{id}','destroy')->name('delete.leave');
+      });
 });
 
 
