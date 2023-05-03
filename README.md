@@ -35,12 +35,14 @@ We would like to extend our thanks to the following sponsors for funding Laravel
 
 
 ## Setup Project
+# step 1
 <code>
 git clone https://github.com/soutruoshim/hr-app-laravel-10.git
 cd hr-app-laravel-10
 composer install or composer update
 </code>
 
+# step 2
 create database a local database phpmyadmin. 
 rename (.env.example) to (.env).
 
@@ -53,7 +55,8 @@ DB_DATABASE=db_name
 DB_USERNAME=root
 DB_PASSWORD=
 </code>
-
+# step 3
+<code>php artisan db:seed</code>
 
 
 ## License
