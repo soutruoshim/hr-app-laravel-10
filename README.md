@@ -35,9 +35,11 @@ We would like to extend our thanks to the following sponsors for funding Laravel
 
 
 ## Setup Project
-<code>git clone https://github.com/soutruoshim/hr-app-laravel-10.git</code>.
-<code>cd hr-app-laravel-10</code>.
-<code>composer install or composer update</code>.
+<code>
+git clone https://github.com/soutruoshim/hr-app-laravel-10.git
+cd hr-app-laravel-10
+composer install or composer update
+</code>
 
 create database a local database phpmyadmin. 
 rename (.env.example) to (.env).
