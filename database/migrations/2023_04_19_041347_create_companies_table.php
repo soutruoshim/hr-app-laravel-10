@@ -21,7 +21,7 @@ return new class extends Migration
             $table->string('website_url')->nullable();
             $table->enum('status',['active','inactive'])->default('active');
             $table->string('logo')->nullable();
-            $table->boolean('sunday');
+            $table->boolean('sunday')->nullable();
             $table->boolean('monday')->nullable();
             $table->boolean('tuesday')->nullable();
             $table->boolean('wednesday')->nullable();

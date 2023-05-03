@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Employee;
 use App\Models\User;
 use DB;
 use Hash;
@@ -32,6 +33,11 @@ class UserSeeder extends Seeder
             ]
         );
         $user->assignRole('admin');
+
+        Employee::create([
+            'user_id'=>$user->id,
+            'branch_id'=>1
+        ]);
 
     }
 }

@@ -105,6 +105,7 @@ $status = $userid->status;
                 </li>
                 @endif
 
+                @if(Auth::user()->can('leave-management'))
                 <li>
                     <a href="#sidebarpermission" data-bs-toggle="collapse">
                         <i class="mdi mdi-book-multiple"></i>
@@ -113,79 +114,94 @@ $status = $userid->status;
                     </a>
                     <div class="collapse" id="sidebarpermission">
                         <ul class="nav-second-level">
+                            @if(Auth::user()->can('leave.type'))
                             <li>
                                 <a href="{{ route('all.leave_type') }}">Leave Type</a>
                             </li>
+                            @endif
+                            @if(Auth::user()->can('leave.request'))
                             <li>
                                 <a href="{{ route('all.leave')}}">Leave Request</a>
                             </li>
+                            @endif
                         </ul>
                     </div>
                 </li>
+                @endif
 
-
-
+                @if(Auth::user()->can('attendance'))
                 <li>
                     <a href="{{route('all.attendance')}}">
                         <i class="mdi mdi-calendar-multiple-check"></i>
                         <span> Attendance </span>
                     </a>
                 </li>
+                @endif
 
+                @if(Auth::user()->can('team.meeting'))
                 <li>
                     <a href="{{ route('all.meeting') }}">
                         <i class="mdi mdi-message-video"></i>
                         <span> Team meeting </span>
                     </a>
                 </li>
+                @endif
+
+                @if(Auth::user()->can('holiday'))
                 <li>
                     <a href="{{ route('all.holiday') }}">
                         <i class="mdi mdi-calendar-remove"></i>
                         <span> Holiday </span>
                     </a>
                 </li>
+                @endif
+
+                @if(Auth::user()->can('notice'))
                 <li>
                     <a href="{{ route('all.notice') }}">
                         <i class="mdi mdi-calendar-text"></i>
                         <span> Notice </span>
                     </a>
                 </li>
+                @endif
+
+                @if(Auth::user()->can('content'))
                 <li>
                     <a href="{{ route('all.content') }}">
                         <i class="mdi mdi-content-paste"></i>
                         <span> Content management </span>
                     </a>
                 </li>
+                @endif
 
                 <li class="menu-title mt-2">Setting</li>
 
+                {{-- @if(Auth::user()->can('setting.menu'))
 
-                @if(Auth::user()->can('setting.menu'))
+                    <li>
+                        <a href="#sidebarAuth" data-bs-toggle="collapse">
+                            <i class="mdi mdi-account-circle-outline"></i>
+                            <span> Setting Admin User </span>
+                            <span class="menu-arrow"></span>
+                        </a>
+                        <div class="collapse" id="sidebarAuth">
+                            <ul class="nav-second-level">
+                                <li>
+                                    <a href="{{ route('all.admin') }}">All Admin</a>
+                                </li>
 
-                <li>
-                    <a href="#sidebarAuth" data-bs-toggle="collapse">
-                        <i class="mdi mdi-account-circle-outline"></i>
-                        <span> Setting Admin User </span>
-                        <span class="menu-arrow"></span>
-                    </a>
-                    <div class="collapse" id="sidebarAuth">
-                        <ul class="nav-second-level">
-                            <li>
-                                <a href="{{ route('all.admin') }}">All Admin</a>
-                            </li>
-
-                            <li>
-                                <a href="{{ route('add.admin') }}">Add Admin </a>
-                            </li>
-
-
-                        </ul>
-                    </div>
-                </li>
-                @endif
+                                <li>
+                                    <a href="{{ route('add.admin') }}">Add Admin </a>
+                                </li>
 
 
+                            </ul>
+                        </div>
+                    </li>
+                @endif --}}
 
+
+                @if(Auth::user()->can('role.management'))
                 <li>
                     <a href="#sidebarExpages" data-bs-toggle="collapse">
                         <i class="mdi mdi-text-box-multiple-outline"></i>
@@ -194,31 +210,42 @@ $status = $userid->status;
                     </a>
                     <div class="collapse" id="sidebarExpages">
                         <ul class="nav-second-level">
+                            @if(Auth::user()->can('all.permission'))
                             <li>
                                 <a href="{{ route('all.permission') }}">All Permission</a>
                             </li>
+                            @endif
+
+                            @if(Auth::user()->can('all.roles'))
                             <li>
                                 <a href="{{ route('all.roles') }}">All Roles</a>
                             </li>
+                            @endif
 
+                            @if(Auth::user()->can('role.in.permission'))
                             <li>
                                 <a href="{{ route('add.roles.permission') }}">Roles in Permission</a>
                             </li>
+                            @endif
 
+                            @if(Auth::user()->can('all.role.permission'))
                             <li>
                                 <a href="{{ route('all.roles.permission') }}">All Roles in Permission</a>
                             </li>
-
+                            @endif
                         </ul>
                     </div>
                 </li>
                 @endif
+                @if(Auth::user()->can('notification'))
                 <li>
                     <a href="{{ route('all.notify') }}">
                         <i class="mdi mdi-message-alert"></i>
                         <span> Notification </span>
                     </a>
                 </li>
+                @endif
+                @endif
             </ul>
 
         </div>

@@ -18,11 +18,11 @@ return new class extends Migration
             $table->string('dob')->nullable();
             $table->string('phone')->nullable();
             $table->string('gender')->nullable();
-            $table->integer('branch_id');
-            $table->integer('department_id');
-            $table->integer('position_id');
+            $table->integer('branch_id')->nullable();
+            $table->integer('department_id')->nullable();
+            $table->integer('position_id')->nullable();
             $table->integer('supervisor')->nullable();
-            $table->integer('office_time');
+            $table->integer('office_time')->nullable();
             $table->string('employment_type')->nullable();
             $table->string('user_type')->nullable();
             $table->date('joining_date')->nullable();
