@@ -15,6 +15,10 @@ class AttendanceController extends Controller
      */
     public function index()
     {
+        $late = Auth::user()->employee->branch->late;
+        $long =  Auth::user()->employee->branch->long;
+        //dd($late.''.$long);
+
         $param = isset($_GET['attendance_date'])? $_GET['attendance_date'] : date("Y-m-d");
         $employees = Employee::where('user_status', 'active')
                      ->leftJoin('attendances', function($join) use ($param)
@@ -47,6 +51,8 @@ class AttendanceController extends Controller
         ->where('employee_id', '=', $emp_id)->get()->first();
 
         //dd($attendance);
+        $late = Auth::user()->employee->branch->late;
+        $long =  Auth::user()->employee->branch->long;
 
         if($attendance){
             $attendance->update([
@@ -54,6 +60,10 @@ class AttendanceController extends Controller
                 'check_out' => $request->check_out_at,
                 'employee_id' => $request->emp_id,
                 'date' => $request->date,
+                'check_in_late'=> $late,
+                'check_in_long'=> $long,
+                'check_out_late'=> $late,
+                'check_out_long'=> $long,
                 'attendance_by' => Auth::id(),
                 'remark' => $request->edit_remark
             ]);
@@ -64,6 +74,10 @@ class AttendanceController extends Controller
                 'check_out' => $request->check_out_at,
                 'date' => $request->date,
                 'employee_id' => $request->emp_id,
+                'check_in_late'=> $late,
+                'check_in_long'=> $long,
+                'check_out_late'=> $late,
+                'check_out_long'=> $long,
                 'attendance_by' => Auth::id(),
                 'remark' => $request->edit_remark
             ]);

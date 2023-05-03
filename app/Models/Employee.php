@@ -13,6 +13,9 @@ class Employee extends Model
     public function user(){
         return $this->belongsTo(User::class,'user_id','id');
     }
+    public function branch(){
+        return $this->belongsTo(Branch::class,'branch_id','id');
+    }
 
     public function attendance(){
         return $this->hasMany(Attendance::class);

@@ -65,5 +65,9 @@ class User extends Authenticatable
         }
          return $hasPermission;
      }
-   } // End Method
+   }
+
+   public function employee(){
+     return $this->hasOne(Employee::class, 'user_id');
+   }// End Method
 }
