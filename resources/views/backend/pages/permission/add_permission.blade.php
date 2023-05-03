@@ -49,15 +49,16 @@
                 <select name="group_name" class="form-select" id="example-select">
                     <option> Select One Category </option>
                     <option value="company-setup">Company Setup</option>
-                    <option value="employee-management">Employee Management</option>
-                    <option value="attendance-section">Banner </option>
-                    <option value="leave-management">Photo </option>
                     <option value="shift-management">Shift-Management  </option>
-                    <option value="holidays">Live  </option>
-                    <option value="notice">Review  </option>
-                    <option value="admin">Admin Setting</option>
-                    <option value="role">Role and Permission</option>
-
+                    <option value="employee-management">Employee Management</option>
+                    <option value="leave-management">Leave Management </option>
+                    <option value="attendance-management">Attendance</option>
+                    <option value="team-meeting-management">Team Meeting</option>
+                    <option value="holiday-management">Holiday</option>
+                    <option value="notice-management">Notice </option>
+                    <option value="content-management">Content</option>
+                    <option value="role-management">Role and Permission</option>
+                    <option value="notification-management">Notification</option>
                 </select>
             </div>
 
