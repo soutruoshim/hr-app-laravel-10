@@ -20,9 +20,9 @@ return new class extends Migration
             $table->time('check_out')->nullable();
             $table->string('check_out_late')->nullable();
             $table->string('check_out_long')->nullable();
-            $table->integer('employee_id');
-            $table->integer('attendance_by');
-            $table->text('remark');
+            $table->integer('employee_id')->nullable();
+            $table->integer('attendance_by')->nullable();
+            $table->text('remark')->nullable();
             $table->enum('status',['pending','approved'])->default('pending');
             $table->timestamps();
         });
