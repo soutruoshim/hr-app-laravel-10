@@ -25,14 +25,26 @@ class HomeDashboardController extends Controller
         $late = Auth::user()->employee->branch->late;
         $long =  Auth::user()->employee->branch->long;
 
-        $attendance = Attendance::insert([
-            'check_in' => $request->check_in_at,
-            'date' => $date,
-            'employee_id' => $emp_id,
-            'check_in_late'=> $late,
-            'check_in_long'=> $long,
-            'attendance_by' => Auth::id()
-        ]);
+        $attendance = Attendance::where('date', '=', $date)
+        ->where('employee_id', '=', $emp_id)->get()->first();
+
+        if($attendance){
+            return response()->json([
+                "success" => false,
+                "message" => "You have check-in last time",
+                "data" => $attendance
+                ]);
+        }else{
+            $attendance = Attendance::create([
+                'check_in' => $request->check_in_at,
+                'date' => $date,
+                'employee_id' => $emp_id,
+                'check_in_late'=> $late,
+                'check_in_long'=> $long,
+                'attendance_by' => Auth::id()
+            ]);
+        }
+
 
         if($attendance){
             return response()->json([
@@ -50,13 +62,15 @@ class HomeDashboardController extends Controller
 
     public function checkOut(Request $request){
 
-        $emp_id = $request->emp_id;
-        $date = $request->date;
+        $emp_id = Auth::user()->employee->id;
+        $date = date('Y-m-d');
         $late = Auth::user()->employee->branch->late;
         $long =  Auth::user()->employee->branch->long;
 
         $attendance = Attendance::where('date', '=', $date)
         ->where('employee_id', '=', $emp_id)->get()->first();
+
+        //dd($attendance);
 
         if($attendance){
             $attendance->update([
@@ -67,7 +81,7 @@ class HomeDashboardController extends Controller
             ]);
         }else{
             return response()->json([
-                "success" => true,
+                "success" => false,
                 "message" => "Please check-in first",
                 "data" => $attendance
                 ]);
