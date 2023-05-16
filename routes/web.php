@@ -4,7 +4,7 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\AdminController;
-
+use App\Http\Controllers\AppSettingController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\CompanyController;
 use App\Http\Controllers\BranchController;
@@ -223,6 +223,12 @@ Route::middleware(['auth','role:admin'])->group(function() {
         Route::post('/update/leave/{id}','update')->name('leave.update');
         Route::get('/delete/leave/{id}','destroy')->name('delete.leave');
       });
+
+          // App setting
+    Route::controller(AppSettingController::class)->group(function(){
+        Route::get('/app_setting','index')->name('app_setting');
+        Route::post('/update/app_setting/{id}','update')->name('update.app_setting');
+    });
 });
 
 

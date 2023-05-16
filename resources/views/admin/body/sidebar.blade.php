@@ -245,6 +245,14 @@ $status = $userid->status;
                     </a>
                 </li>
                 @endif
+                @if(Auth::user()->can('appsetting.setup'))
+                <li>
+                    <a href="{{ route('app_setting') }}">
+                        <i class="mdi mdi-settings-box"></i>
+                        <span> App Setting </span>
+                    </a>
+                </li>
+                @endif
                 @endif
             </ul>
 

@@ -59,6 +59,7 @@
                     <option value="content-management">Content</option>
                     <option value="role-management">Role and Permission</option>
                     <option value="notification-management">Notification</option>
+                    <option value="appsetting-setup">App Setting Setup</option>
                 </select>
             </div>
 
