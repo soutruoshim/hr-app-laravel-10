@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\API\RegisterController;
 use App\Http\Controllers\API\ProductController;
 use App\Http\Controllers\Api\ConfigController;
+use App\Http\Controllers\Api\HomeDashboardController;
 
 /*
 |--------------------------------------------------------------------------
@@ -31,4 +32,17 @@ Route::controller(ConfigController::class)->group(function(){
 
 Route::middleware('auth:sanctum')->group( function () {
     Route::resource('products', ProductController::class);
+});
+
+
+// Route::controller(HomeDashboardController::class)->group(function(){
+//     Route::post('checkin', 'checkIn');
+//     Route::post('checkout', 'checkOut');
+// })->middleware('auth:sanctum');
+
+Route::middleware('auth:sanctum')->group( function () {
+    Route::controller(HomeDashboardController::class)->group(function(){
+        Route::post('checkin', 'checkIn');
+        Route::post('checkout', 'checkOut');
+    });
 });
