@@ -58,7 +58,7 @@
                                                  <span class="btn btn-outline-secondary btn-xs checkLocation"
                                                     title="Show check In location"
                                                     data-bs-toggle="modal"
-                                                    data-href="https://maps.google.com/maps?q=-0.176818,-78.495861&t=&z=20&ie=UTF8&iwloc=&output=embed"
+                                                    data-href="https://maps.google.com/maps?q=<?= $item->check_in_late ?>,<?= $item->check_in_long ?>&t=&z=20&ie=UTF8&iwloc=&output=embed"
                                                     data-bs-target="#addslider">
                                                     {{ $item->check_in }}
                                                  </span>
@@ -70,7 +70,7 @@
                                                 <span class="btn btn-outline-secondary btn-xs checkLocation"
                                                    title="Show check In location"
                                                    data-bs-toggle="modal"
-                                                   data-href="https://maps.google.com/maps?q=-0.176818,-78.495861&t=&z=20&ie=UTF8&iwloc=&output=embed"
+                                                   data-href="https://maps.google.com/maps?q=<?= $item->check_out_late ?>,<?= $item->check_out_long ?>&t=&z=20&ie=UTF8&iwloc=&output=embed"
                                                    data-bs-target="#addslider">
                                                    {{ $item->check_out }}
                                                 </span>

@@ -15,9 +15,11 @@ class AttendanceController extends Controller
      */
     public function index()
     {
+        //dd(Auth::user()->employee->branch);
+
         $late = Auth::user()->employee->branch->late;
         $long =  Auth::user()->employee->branch->long;
-        //dd($late.''.$long);
+
 
         $param = isset($_GET['attendance_date'])? $_GET['attendance_date'] : date("Y-m-d");
         $employees = Employee::where('user_status', 'active')
@@ -26,7 +28,7 @@ class AttendanceController extends Controller
                          $join->on('employees.id', '=', 'attendances.employee_id')
                               ->where('date','=', $param);
                      })
-                     ->get(['Employees.*', 'attendances.date', 'attendances.check_in','attendances.check_out','attendances.attendance_by','attendances.check_out','attendances.status']);
+                     ->get(['Employees.*', 'attendances.date', 'attendances.check_in','attendances.check_in_late','attendances.check_in_long','attendances.check_out','attendances.check_out_late','attendances.check_out_long','attendances.attendance_by','attendances.check_out','attendances.status']);
         return view('backend.pages.attendance.index',compact('employees'));
     }
 
