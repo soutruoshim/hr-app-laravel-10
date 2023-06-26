@@ -6,6 +6,7 @@ use App\Models\Attendance;
 use App\Models\Employee;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use DB;
 
 
 class AttendanceController extends Controller
@@ -127,10 +128,15 @@ class AttendanceController extends Controller
     }
 
     public function getAttendanceByMonth(){
+        //DB::enableQueryLog();
         $attendances = Attendance::whereMonth('date',$_GET['month'])
                                     ->whereYear('date',$_GET['year'])
                                     ->Where('employee_id', $_GET['emp_id'])
                                     ->get();
+                                    // dd($attendances);
+        //$query = DB::getQueryLog();
+
+        //dd($query);
         return json_encode($attendances);
     }
 }

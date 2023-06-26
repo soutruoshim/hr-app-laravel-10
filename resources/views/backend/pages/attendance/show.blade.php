@@ -128,9 +128,9 @@
             });
 
             //
-            var month = 4;
-            var year = 2023;
-            var emp_id = 6;
+            var month = {{$month}};
+            var year = {{$year}};
+            var emp_id = {{$employee->id}};
             $.ajax({
                 url: "{{ url('/attendance/ajax?month=') }}" + month+"&year="+ year+"&emp_id="+emp_id,
                 type: "GET",
