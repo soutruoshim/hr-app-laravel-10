@@ -200,8 +200,7 @@
                                     </div>
 
 
-
-                                    <div class="col-lg-6 mb-3">
+                                    {{-- <div class="col-lg-6 mb-3">
 
                                         <label for="employment_type" class="form-label">Employment Type <span
                                                 style="color: red">*</span> </label>
@@ -215,11 +214,11 @@
 
                                         </select>
 
-                                    </div>
+                                    </div> --}}
 
 
 
-                                    <div class="col-lg-6 mb-3">
+                                    {{-- <div class="col-lg-6 mb-3">
 
                                         <label for="user_type" class="form-label">User Type <span
                                                 style="color: red">*</span></label>
@@ -232,7 +231,7 @@
 
                                         </select>
 
-                                    </div>
+                                    </div> --}}
 
 
 
@@ -292,7 +291,7 @@
 
 
 
-                                    <div class="col-lg-6 mb-3">
+                                    {{-- <div class="col-lg-6 mb-3">
 
                                         <label for="number" class="form-label">Leave Allocated</label>
 
@@ -300,7 +299,7 @@
                                             id="leave_allocated" name="leave_allocated" value="{{$employee->leave_allocated}}"
                                             autocomplete="off" placeholder="" >
 
-                                    </div>
+                                    </div> --}}
 
 
 

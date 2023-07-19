@@ -23,14 +23,14 @@ return new class extends Migration
             $table->integer('position_id')->nullable();
             $table->integer('supervisor')->nullable();
             $table->integer('office_time')->nullable();
-            $table->string('employment_type')->nullable();
-            $table->string('user_type')->nullable();
+            // $table->string('employment_type')->nullable();
+            // $table->string('user_type')->nullable();
             $table->date('joining_date')->nullable();
             $table->string('work_space')->nullable();
             $table->string('bank_name')->nullable();
             $table->string('bank_account')->nullable();
             $table->string('bank_account_type')->nullable();
-            $table->string('leave_allocated')->nullable();
+            // $table->string('leave_allocated')->nullable();
             $table->string('salary')->nullable();
             $table->enum('verification_status',['pending','verified', 'rejected', 'suspended'])->default('pending');
             $table->enum('user_status',['active','inactive'])->default('active');

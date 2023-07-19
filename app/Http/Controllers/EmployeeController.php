@@ -76,8 +76,8 @@ class EmployeeController extends Controller
 
                 'supervisor' => $request->supervisor,
                 'office_time' => $request->office_time,
-                'employment_type' => $request->employment_type,
-                'user_type' => $request->user_type,
+                // 'employment_type' => $request->employment_type,
+                // 'user_type' => $request->user_type,
 
                 'joining_date' => $request->joining_date,
                 'work_space' => $request->work_space,
@@ -85,7 +85,7 @@ class EmployeeController extends Controller
                 'bank_account' => $request->bank_account,
                 'bank_account_type' => $request->bank_account_type,
 
-                'leave_allocated' => $request->leave_allocated,
+                // 'leave_allocated' => $request->leave_allocated,
                 'salary' => $request->salary,
                 'verification_status' => $request->verification_status,
                 'user_status' => $request->user_status,
@@ -169,8 +169,8 @@ class EmployeeController extends Controller
 
                 'supervisor' => $request->supervisor,
                 'office_time' => $request->office_time,
-                'employment_type' => $request->employment_type,
-                'user_type' => $request->user_type,
+                // 'employment_type' => $request->employment_type,
+                // 'user_type' => $request->user_type,
 
                 'joining_date' => $request->joining_date,
                 'work_space' => $request->work_space,
@@ -178,7 +178,7 @@ class EmployeeController extends Controller
                 'bank_account' => $request->bank_account,
                 'bank_account_type' => $request->bank_account_type,
 
-                'leave_allocated' => $request->leave_allocated,
+                // 'leave_allocated' => $request->leave_allocated,
                 'salary' => $request->salary,
                 'verification_status' => $request->verification_status,
                 'user_status' => $request->user_status,
@@ -212,8 +212,8 @@ class EmployeeController extends Controller
 
                 'supervisor' => $request->supervisor,
                 'office_time' => $request->office_time,
-                'employment_type' => $request->employment_type,
-                'user_type' => $request->user_type,
+                // 'employment_type' => $request->employment_type,
+                // 'user_type' => $request->user_type,
 
                 'joining_date' => $request->joining_date,
                 'work_space' => $request->work_space,
@@ -221,7 +221,7 @@ class EmployeeController extends Controller
                 'bank_account' => $request->bank_account,
                 'bank_account_type' => $request->bank_account_type,
 
-                'leave_allocated' => $request->leave_allocated,
+                // 'leave_allocated' => $request->leave_allocated,
                 'salary' => $request->salary,
                 'verification_status' => $request->verification_status,
                 'user_status' => $request->user_status,
