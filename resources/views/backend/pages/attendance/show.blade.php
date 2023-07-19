@@ -79,7 +79,7 @@
                                         <th>Check In At</th>
                                         <th>Check Out At</th>
                                         <th>Attendance Status</th>
-                                        <th>Action</th>
+                                        <th>Remark</th>
 
                                     </tr>
                                 </thead>
@@ -99,7 +99,7 @@
                                         <td class="check-in"></td>
                                         <td class="check-out"></td>
                                         <td class="status"></td>
-                                        <td class="action"></td>
+                                        <td class="remark"></td>
                                     </tr>
                                     <?php }
                                     ?>
@@ -145,6 +145,9 @@
                         //     "border-style": "inset"
                         // });
                         $('.'+value.date).children(".check-in").append(value.check_in)
+                        $('.'+value.date).children(".check-out").append(value.check_out)
+                        $('.'+value.date).children(".status").append(value.status)
+                        $('.'+value.date).children(".remark").append(value.remark)
                     });
                 },
             });

@@ -68,6 +68,7 @@ class AttendanceController extends Controller
                 'check_out_late'=> $late,
                 'check_out_long'=> $long,
                 'attendance_by' => Auth::id(),
+                'status' => 'approved',
                 'remark' => $request->edit_remark
             ]);
         }else{
